@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Option C v2 - Screenshot Style Match</title>
+  <style>
+    :root {
+      --bg: #0c1220;
+      --frame-top: #19243a;
+      --frame-bottom: #0b1020;
+      --blue-1: #f7fbff; --blue-2: #edf5ff; --blue-title: #2b6cb0;
+      --green-1: #f8fff6; --green-2: #e9f7e4; --green-title: #2f855a;
+      --gold-1: #fff9ef; --gold-2: #f6ead0; --gold-title: #b7791f;
+      --purple-1: #fcf8ff; --purple-2: #f2eafe; --purple-title: #7f56d9;
+      --sky-1: #f8fdff; --sky-2: #ecf7ff; --sky-title: #2b6cb0;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --border: rgba(17,24,39,.08);
+      --shadow: 0 8px 24px rgba(2, 6, 23, .16);
+      --arrow: #8ed0ff;
+      --arrow-dark: #4fa7ea;
+      --bronze: #c7863e;
+      --silver: #b9b9bd;
+      --gold: #efbf2f;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+    }
+
+    .canvas {
+      max-width: 1600px;
+      margin: 16px auto;
+      padding: 14px 14px 18px;
+      background: linear-gradient(180deg, var(--frame-top) 0%, var(--frame-bottom) 100%);
+      border-radius: 10px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.25);
+      overflow-x: auto;
+    }
+
+    .flow {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+      min-width: max-content;
+    }
+
+    .panel {
+      width: 222px;
+      min-width: 222px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: white;
+      padding: 12px 14px 14px;
+      position: relative;
+    }
+
+    .panel.warehouse {
+      width: 360px;
+      min-width: 360px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .source    { background: linear-gradient(180deg, var(--blue-1) 0%, var(--blue-2) 100%); }
+    .python    { background: linear-gradient(180deg, var(--green-1) 0%, var(--green-2) 100%); }
+    .warehouse { background: linear-gradient(180deg, var(--gold-1) 0%, var(--gold-2) 100%); }
+    .consume   { background: linear-gradient(180deg, var(--purple-1) 0%, var(--purple-2) 100%); }
+    .auto      { background: linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 100%); }
+
+    .source h2 { color: var(--blue-title); }
+    .python h2 { color: var(--green-title); }
+    .warehouse h2 { color: var(--gold-title); }
+    .consume h2 { color: var(--purple-title); }
+    .auto h2 { color: var(--sky-title); }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 23px;
+      font-weight: 800;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    .icon-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 2px 0 8px;
+      min-height: 56px;
+      align-items: center;
+    }
+
+    .center { text-align: center; }
+    .sub { font-size: 17px; font-weight: 700; margin-top: 4px; }
+    .small { font-size: 12px; color: var(--muted); }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+      padding-inline: 6px;
+    }
+
+    .stack { text-align: center; }
+
+    .etl-list {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0;
+      font-size: 13.5px;
+      line-height: 1.23;
+    }
+
+    .etl-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      margin: 7px 0;
+      color: #1f2937;
+    }
+
+    .tick {
+      width: 13px;
+      height: 13px;
+      min-width: 13px;
+      margin-top: 1px;
+    }
+
+    .module-pill {
+      display: inline-block;
+      font-size: 11px;
+      line-height: 1;
+      padding: 4px 6px;
+      margin-left: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(17,24,39,.08);
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    .arrow {
+      width: 34px;
+      min-width: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .warehouse-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .layer {
+      min-height: 298px;
+      padding: 0 6px;
+      position: relative;
+    }
+
+    .layer + .layer::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: rgba(0,0,0,.12);
+    }
+
+    .db-ico { display:flex; justify-content:center; margin-bottom: 4px; }
+    .layer h3 {
+      margin: 2px 0 8px;
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .layer.bronze h3 { color: #b76d1c; }
+    .layer.silver h3 { color: #7b7f86; }
+    .layer.gold h3   { color: #c69206; }
+
+    .layer .headline,
+    .layer p {
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.25;
+      margin: 7px 0;
+    }
+
+    .layer .headline strong { font-size: 13.5px; }
+
+    .consume-list, .auto-list {
+      list-style: none;
+      margin: 8px 0 0;
+      padding: 0;
+    }
+
+    .consume-list li, .auto-list li {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin: 12px 0;
+      font-size: 14px;
+      line-height: 1.22;
+    }
+
+    .icon-card {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.72);
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(17,24,39,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+    }
+
+    .muted { color: var(--muted); }
+
+    svg { display: block; }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="flow">
+
+      <!-- 1. Source -->
+      <section class="panel source">
+        <h2>1. Source</h2>
+        <li>
+        </li>
+        <div class="icon-wrap">
+          <svg width="46" height="58" viewBox="0 0 46 58" aria-hidden="true">
+            <path d="M10 3h18l8 8v42a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="#ffffff" stroke="#52525b" stroke-width="2"/>
+            <path d="M28 3v10h10" fill="#eef2ff" stroke="#52525b" stroke-width="2"/>
+            <path d="M14 24h18M14 30h18M14 36h14" stroke="#9ca3af" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="center sub"><strong>Object Type: </strong>CSV</div>
+        <div class="source-grid">
+          <div class="stack">
+            <svg width="100" height="58" viewBox="0 0 52 58" aria-hidden="true">
+              <ellipse cx="26" cy="12" rx="16" ry="6.5" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+              <path d="M10 12v11c0 3.6 7.2 6.5 16 6.5s16-2.9 16-6.5V12" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+              <path d="M10 23v11c0 3.6 7.2 6.5 16 6.5s16-2.9 16-6.5V23" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+              <path d="M10 34v11c0 3.6 7.2 6.5 16 6.5s16-2.9 16-6.5V34" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+            </svg>
+            <div style="font-size:14px;font-weight:700;margin-top:4px;">CRM</div>
+            <div class="small">(CSV Files)</div>
+          </div>
+          <div class="stack">
+            <svg width="52" height="58" viewBox="0 0 52 58" aria-hidden="true">
+              <ellipse cx="26" cy="12" rx="16" ry="6.5" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+              <path d="M10 12v11c0 3.6 7.2 6.5 16 6.5s16-2.9 16-6.5V12" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+              <path d="M10 23v11c0 3.6 7.2 6.5 16 6.5s16-2.9 16-6.5V23" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+              <path d="M10 34v11c0 3.6 7.2 6.5 16 6.5s16-2.9 16-6.5V34" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+            </svg>
+            <div style="font-size:14px;font-weight:700;margin-top:4px;">ERP</div>
+            <div class="small">(CSV Files)</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="34" height="84" viewBox="0 0 34 84">
+          <defs>
+            <filter id="glow1" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M4 42H25" stroke="#78c9ff" stroke-width="5" stroke-linecap="round" filter="url(#glow1)"/>
+          <path d="M18 31l10 11-10 11" fill="none" stroke="#78c9ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow1)"/>
+          <path d="M4 42H25" stroke="#499fe0" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M18 31l10 11-10 11" fill="none" stroke="#499fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- 2. Python ETL -->
+      <section class="panel python">
+        <h2>2. Python ETL</h2>
+        <div class="icon-wrap">
+          <svg width="60" height="48" viewBox="0 0 120 96" aria-hidden="true">
+            <path d="M59 10c-22 0-21 10-21 10v12h22v4H26S10 35 10 59c0 24 14 23 14 23h13v-18s-.7-14 13-14h22s12 .2 12-12V20S85 10 61 10h-2zm-12 12a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" fill="#3776AB"/>
+            <path d="M61 86c22 0 21-10 21-10V64H60v-4h34s16 1 16-23c0-24-14-23-14-23H83v18s.7 14-13 14H48s-12-.2-12 12v18s-1 10 23 10h2zm12-12a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="#FFD43B"/>
+          </svg>
+        </div>
+        <ul class="etl-list">
+          <li>
+          </li>
+          <li>
+          </li>
+          <li>
+            <svg class="tick" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#22c55e"/><path d="M4 8.5 6.6 11 12 5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Connect to SQL Server</span>
+          </li>
+          <li>
+          </li>
+          <li>
+            <svg class="tick" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#22c55e"/><path d="M4 8.5 6.6 11 12 5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Extract CSV Data</span>
+          </li>
+          <li>
+          </li>
+          <li>
+            <svg class="tick" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#22c55e"/><path d="M4 8.5 6.6 11 12 5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Truncate Bronze Tables</span>
+          </li>
+          <li>
+          </li>
+          <li>
+            <svg class="tick" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#22c55e"/><path d="M4 8.5 6.6 11 12 5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Validate Gold Layer</span>
+          </li>
+          <li>
+          </li>
+          <li>
+            <svg class="tick" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#22c55e"/><path d="M4 8.5 6.6 11 12 5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Generate Excel Dashboard</span>
+          </li>
+          <li>
+          </li>
+          <li>
+            <svg class="tick" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#22c55e"/><path d="M4 8.5 6.6 11 12 5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Logging &amp; Error Handling</span>
+          </li>
+          <li>
+          </li>
+          <li>
+            <svg class="tick" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#22c55e"/><path d="M4 8.5 6.6 11 12 5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Execution Time Tracking</span>
+          </li>
+        </ul>
+      </section>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="34" height="84" viewBox="0 0 34 84">
+          <defs>
+            <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M4 42H25" stroke="#78c9ff" stroke-width="5" stroke-linecap="round" filter="url(#glow2)"/>
+          <path d="M18 31l10 11-10 11" fill="none" stroke="#78c9ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow2)"/>
+          <path d="M4 42H25" stroke="#499fe0" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M18 31l10 11-10 11" fill="none" stroke="#499fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- 3. Warehouse -->
+      <section class="panel warehouse">
+        <h2>3. Data Warehouse (SQL Server)</h2>
+        <div class="warehouse-grid">
+          <div class="layer bronze">
+            <div class="db-ico">
+              <svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true">
+                <ellipse cx="31" cy="13" rx="20" ry="8" fill="#d39755" stroke="#b7791f" stroke-width="2"/>
+                <path d="M11 13v14c0 4.4 9 8 20 8s20-3.6 20-8V13" fill="#cf8a3f" stroke="#b7791f" stroke-width="2"/>
+                <path d="M11 27v14c0 4.4 9 8 20 8s20-3.6 20-8V27" fill="#d18d45" stroke="#b7791f" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Bronze</h3>
+            <div class="headline"><strong>Tables</strong><br/>Raw Data</div>
+            <p>Full Load</p>
+            <p>(Truncate &amp; Insert)</p>
+            <p>No Transformations</p>
+          </div>
+          <div class="layer silver">
+            <div class="db-ico">
+              <svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true">
+                <ellipse cx="31" cy="13" rx="20" ry="8" fill="#cfcfd3" stroke="#a1a1aa" stroke-width="2"/>
+                <path d="M11 13v14c0 4.4 9 8 20 8s20-3.6 20-8V13" fill="#c7c7cc" stroke="#a1a1aa" stroke-width="2"/>
+                <path d="M11 27v14c0 4.4 9 8 20 8s20-3.6 20-8V27" fill="#bebec4" stroke="#a1a1aa" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Silver</h3>
+            <div class="headline"><strong>Tables</strong><br/>Cleaned &amp; Standardized </div>
+            <p>Data Cleaning</p>
+            <p>Standardization</p>
+            <p>Normalization</p>
+            <p>Enrichment</p>
+          </div>
+          <div class="layer gold">
+            <div class="db-ico">
+              <svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true">
+                <ellipse cx="31" cy="13" rx="20" ry="8" fill="#f2c94c" stroke="#d4a106" stroke-width="2"/>
+                <path d="M11 13v14c0 4.4 9 8 20 8s20-3.6 20-8V13" fill="#f1c43a" stroke="#d4a106" stroke-width="2"/>
+                <path d="M11 27v14c0 4.4 9 8 20 8s20-3.6 20-8V27" fill="#eaba28" stroke="#d4a106" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Gold</h3>
+            <div class="headline"><strong>Views</strong><br/>Business Ready </div>
+            <p>Aggregations</p>
+            <p>Business Logic</p>
+            <p>Analytical Model</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="34" height="84" viewBox="0 0 34 84">
+          <defs>
+            <filter id="glow3" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M4 42H25" stroke="#78c9ff" stroke-width="5" stroke-linecap="round" filter="url(#glow3)"/>
+          <path d="M18 31l10 11-10 11" fill="none" stroke="#78c9ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow3)"/>
+          <path d="M4 42H25" stroke="#499fe0" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M18 31l10 11-10 11" fill="none" stroke="#499fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- 4. Consume -->
+      <section class="panel consume">
+        <h2>4. Consume</h2>
+        <ul class="consume-list">
+          <li>
+          </li>
+          <li>
+            <div class="icon-card">
+              <svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="32" rx="2.5" fill="#107c41"/>
+                <rect x="17" y="5" width="21" height="30" rx="2.5" fill="#185c37"/>
+                <rect x="23" y="10" width="10" height="3" fill="#d1fae5" opacity=".85"/>
+                <rect x="23" y="16" width="10" height="3" fill="#d1fae5" opacity=".85"/>
+                <rect x="23" y="22" width="10" height="3" fill="#d1fae5" opacity=".85"/>
+                <path d="M7 11l3.2 5 3.1-5h3.6l-4.8 7 5.1 8h-3.7l-3.4-5.5L6.8 26H3.2l5.1-8-4.8-7z" fill="#fff"/>
+              </svg>
+            </div>
+            <div><strong>Excel Dashboard</strong></div>
+          </li>
+          <li>
+          </li>
+          <li>
+            <div class="icon-card">
+              <svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true">
+                <rect x="4" y="5" width="32" height="28" rx="4" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+                <path d="M10 26V18M18 26V12M26 26V21M32 29H8" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div><strong>BI / Reporting</strong></div>
+          </li>
+          <li>
+          </li>
+          <li>
+            <div class="icon-card">
+              <svg width="40" height="40" viewBox="0 0 44 44" aria-hidden="true">
+                <circle cx="15" cy="15" r="5" fill="#60a5fa"/>
+                <circle cx="29" cy="14" r="5" fill="#93c5fd"/>
+                <circle cx="22" cy="28" r="5" fill="#2563eb"/>
+                <path d="M8 36c0-4.4 4-8 9-8s9 3.6 9 8" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M18 36c0-4.4 4-8 9-8s9 3.6 9 8" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div><strong>Business Analysis</strong></div>
+          </li>
+        </ul>
+      </section>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="34" height="84" viewBox="0 0 34 84">
+          <defs>
+            <filter id="glow4" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M4 42H25" stroke="#78c9ff" stroke-width="5" stroke-linecap="round" filter="url(#glow4)"/>
+          <path d="M18 31l10 11-10 11" fill="none" stroke="#78c9ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow4)"/>
+          <path d="M4 42H25" stroke="#499fe0" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M18 31l10 11-10 11" fill="none" stroke="#499fe0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- 5. Automation -->
+      <section class="panel auto">
+        <h2>5. Automation</h2>
+        <ul class="auto-list">
+          <li>
+          </li>
+          <li>
+            <div class="icon-card">
+              <svg width="40" height="40" viewBox="0 0 44 44" aria-hidden="true">
+                <path d="M9 7h17l9 9v21H9z" fill="#315b9f" stroke="#173e7a" stroke-width="1.6"/>
+                <path d="M26 7v9h9" fill="#7fa4e4"/>
+                <rect x="11" y="17" width="10" height="10" rx="1.5" fill="#ecf2ff"/>
+                <path d="M13.5 19.5h5M13.5 22h5M13.5 24.5h5" stroke="#315b9f" stroke-width="1.2"/>
+                <text x="28" y="28" text-anchor="middle" font-size="8" font-family="Arial" font-weight="700" fill="#ffffff">BAT</text>
+              </svg>
+            </div>
+            <div><strong>Batch File</strong><br/><span class="muted">etl.bat</span></div>
+          </li>
+          <li>
+          </li>
+          <li>
+            <div class="icon-card">
+              <svg width="40" height="40" viewBox="0 0 44 44" aria-hidden="true">
+                <rect x="7" y="9" width="30" height="27" rx="4" fill="#ffffff" stroke="#6b7280" stroke-width="2"/>
+                <path d="M7 16h30" stroke="#6b7280" stroke-width="2"/>
+                <path d="M14 6v7M30 6v7" stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+                <rect x="13" y="21" width="6" height="5" fill="#93c5fd"/>
+                <rect x="21" y="21" width="6" height="5" fill="#bfdbfe"/>
+                <rect x="29" y="21" width="6" height="5" fill="#dbeafe"/>
+                <rect x="13" y="28" width="6" height="5" fill="#dbeafe"/>
+                <rect x="21" y="28" width="6" height="5" fill="#93c5fd"/>
+                <rect x="29" y="28" width="6" height="5" fill="#bfdbfe"/>
+              </svg>
+            </div>
+            <div><strong>Windows Task Scheduler</strong></div>
+          </li>
+          <li>
+          </li>
+          <li>
+            <div class="icon-card">
+              <svg width="42" height="42" viewBox="0 0 44 44" aria-hidden="true">
+                <path d="M10 18a12 12 0 0 1 20-5" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+                <path d="M31 10v7h-7" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M34 26a12 12 0 0 1-20 5" fill="none" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round"/>
+                <path d="M13 34v-7h7" fill="none" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div><strong>Daily Automated Execution</strong></div>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>

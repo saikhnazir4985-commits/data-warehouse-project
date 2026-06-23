@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Final Production Diagram - SQL + Python ETL</title>
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --panel: #ffffff;
+      --border: #c9cdd3;
+      --text: #111827;
+      --muted: #4b5563;
+      --blue: #dbeefe;
+      --green: #eaf7ea;
+      --gold-wrap: #fff6e7;
+      --bronze: #e5c8a4;
+      --silver: #d2d2d2;
+      --gold: #ffc000;
+      --purple: #efe6ff;
+      --sky: #e8f4ff;
+      --arrow: #5daeea;
+      --shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      width: 1880px;
+      margin: 18px auto;
+      padding: 18px 20px 16px;
+      background: var(--bg);
+    }
+
+    .titlebar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .title-chip {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 22px;
+      box-shadow: var(--shadow);
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .title-chip span {
+      color: #2563eb;
+    }
+
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .panel.narrow { width: 205px; min-height: 480px; }
+    .panel.medium { width: 260px; min-height: 480px; }
+    .panel.wide { width: 520px; min-height: 560px; }
+
+    .panel-header {
+      padding: 14px 10px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 800;
+      border-bottom: 1px solid var(--border);
+      background: #fafafa;
+    }
+
+    .source-head { background: #f8fafc; }
+    .python-head { background: var(--blue); }
+    .warehouse-head { background: #fcfcfc; }
+    .consume-head { background: #fafafa; }
+    .auto-head { background: var(--sky); }
+
+    .panel-body {
+      padding: 16px 16px 18px;
+    }
+
+    .center { text-align: center; }
+
+    .emoji-icon {
+      font-size: 62px;
+      line-height: 1;
+      height: 88px;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+    }
+
+    .block-title {
+      text-align: center;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.08;
+      margin: 10px 0 12px;
+    }
+
+    .small {
+      font-size: 13px;
+      line-height: 1.28;
+      color: var(--text);
+      margin: 0;
+    }
+
+    ul {
+      margin: 10px 0 0 18px;
+      padding: 0;
+      font-size: 13px;
+      line-height: 1.28;
+    }
+
+    li { margin: 3px 0; }
+
+    .arrow {
+      width: 44px;
+      min-width: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--arrow);
+      line-height: 1;
+      text-shadow: 0 1px 0 rgba(255,255,255,.65);
+    }
+
+    .warehouse-shell {
+      background: var(--gold-wrap);
+      border-top: 0;
+    }
+
+    .warehouse-caption {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: -2px;
+      margin-bottom: 12px;
+    }
+
+    .layer {
+      border: 1px solid var(--border);
+      background: #fbfbfb;
+      margin-bottom: 14px;
+    }
+
+    .layer:last-child { margin-bottom: 0; }
+
+    .layer-head {
+      text-align: center;
+      padding: 7px 8px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .layer-body {
+      padding: 14px 14px 16px;
+      min-height: 135px;
+      font-size: 13px;
+      line-height: 1.3;
+      background: #fafafa;
+    }
+
+    .layer-body p { margin: 10px 0; }
+
+    .bronze-head { background: var(--bronze); }
+    .silver-head { background: var(--silver); }
+    .gold-head { background: var(--gold); }
+
+    .module-list { margin-top: 8px; }
+
+    .module-list li {
+      margin: 7px 0;
+      list-style: none;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .module-list li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: #2563eb;
+      font-weight: 800;
+    }
+
+    .pill {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #374151;
+      border: 1px solid #dbe3f0;
+    }
+
+    .mt-8 { margin-top: 8px; }
+
+    .bottom-row {
+      display: flex;
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .mini {
+      width: 280px;
+      min-height: 162px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 14px 16px;
+    }
+
+    .mini-title {
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .mini ul { margin-top: 8px; }
+
+    .footer-note {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="titlebar">
+      <div class="title-chip">Data Design — <span>SQL Data Warehouse + Python ETL Pipeline</span></div>
+    </div>
+
+    <div class="flow-row">
+      <!-- Source -->
+      <section class="panel narrow">
+        <div class="panel-header source-head">Source</div>
+        <div class="panel-body center">
+          <!-- <div class="emoji-icon">📄</div> -->
+          <div class="block-title">CSV Files</div>
+          <div class="emoji-icon">📄</div>
+          <p class="small"><strong>CRM</strong></p>
+          <div class="emoji-icon">📄</div>
+          <p class="small"><strong>ERP</strong></p>
+          <li>
+
+          </li>
+          <div class="mt-8 small"><strong>Input:</strong> CRM / ERP source datasets</div>
+        </div>
+      </section>
+
+      <div class="arrow">➜</div>
+
+      <!-- Python ETL -->
+      <section class="panel medium">
+        <div class="panel-header python-head">Python ETL</div>
+        <div class="panel-body center">
+          <div class="emoji-icon">🐍</div>
+          <div class="block-title">End-to-End Pipeline Orchestration</div>
+          <ul class="module-list" style="text-align:left; display:inline-block; margin-left:0;">
+            <li><strong>main.py</strong> — pipeline runner</li>
+            <li><strong>extract.py</strong> — read CSV files</li>
+            <li><strong>load.py</strong> — truncate & load Bronze</li>
+            <li><strong>exec_procedure.py</strong> — execute Silver / Gold procedures</li>
+            <li><strong>dashboard.py</strong> — generate Excel dashboard</li>
+            <li><strong>logs.py</strong> — logging setup</li>
+            <li>Execution time tracking</li>
+            <li>Error handling & status logging</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="arrow">➜</div>
+
+      <!-- Warehouse -->
+      <section class="panel wide">
+        <div class="panel-header warehouse-head">SQL Server Data Warehouse</div>
+        <div class="panel-body warehouse-shell">
+          <div class="warehouse-caption">Medallion Architecture — Bronze → Silver → Gold</div>
+
+          <div class="layer">
+            <div class="layer-head bronze-head">Bronze Layer</div>
+            <div class="layer-body">
+              <p><strong>Purpose:</strong> Raw Data Storage</p>
+              <p><strong>Object Type:</strong> Tables</p>
+              <!-- <ul>
+                <li>crm_cust_info</li>
+                <li>crm_prd_info</li>
+                <li>crm_sales_details</li>
+              </ul> -->
+              <p>Full load (truncate & insert)</p>
+              <p>No transformations</p>
+            </div>
+          </div>
+
+          <div class="layer">
+            <div class="layer-head silver-head">Silver Layer</div>
+            <div class="layer-body">
+              <p><strong>Purpose:</strong> Cleaned & Standardized Data</p>
+              <p><strong>Object Type:</strong> Tables</p>
+              <ul>
+                <li>Data cleaning</li>
+                <li>Data standardization</li>
+                <li>Normalization / enrichment</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="layer">
+            <div class="layer-head gold-head">Gold Layer</div>
+            <div class="layer-body">
+              <p><strong>Purpose:</strong> Business-Ready Data</p>
+              <p><strong>Object Type:</strong> Views</p>
+              <ul>
+                <li>Data Aggregation</li>
+                <li>Business Logic</li>
+              </ul>
+              <p>Star schema model</p>
+              <p>Dashboard / reporting ready</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Warehouse -->
+
+      <div class="arrow">➜</div>
+
+      <!-- Consume -->
+      <section class="panel narrow">
+        <div class="panel-header consume-head">Consume</div>
+        <div class="panel-body center">
+          <div class="emoji-icon">📊</div>
+          <div class="block-title">Excel Dashboard</div>
+          <p class="small">Report auto-generated using Python ETL</p>
+          <ul style="display:inline-block; text-align:left; margin-top:12px;">
+            <li>Sales Overview</li>
+            <li>Orders Trend</li>
+            <li>Quantity Analysis</li>
+          </ul>
+          <div class="pill">xlsxwriter</div>
+        </div>
+      </section>
+
+      <div class="arrow">➜</div>
+
+      <!-- Automation -->
+      <section class="panel narrow">
+        <div class="panel-header auto-head">Automation</div>
+        <div class="panel-body center">
+          <div class="emoji-icon">⚙️</div>
+          <div class="block-title">Scheduled Execution</div>
+          <ul style="display:inline-block; text-align:left;">
+            <li><strong>etl.bat</strong></li>
+            <li>Windows Task Scheduler</li>
+            <li>Daily automated ETL run</li>
+            <li>No manual intervention</li>
+          </ul>
+          <div class="pill">Production-ready workflow</div>
+        </div>
+      </section>
+    </div>
+
+    <div class="bottom-row">
+      <section class="mini">
+        <div class="mini-title">🧭 Architecture Summary</div>
+        <ul>
+          <li>Source CSV files are ingested through Python ETL</li>
+          <li>Python loads Bronze and triggers Silver / Gold SQL procedures</li>
+          <li>Gold layer powers the final Excel dashboard</li>
+          <li>Entire pipeline is automated on a schedule</li>
+        </ul>
+      </section>
+
+      <section class="mini">
+        <div class="mini-title">📋 Logging & Monitoring</div>
+        <ul>
+          <li>ETL start / end timestamps</li>
+          <li>Row load messages and validation logs</li>
+          <li>Error tracking with log file output</li>
+          <li>Execution transparency in terminal + logs</li>
+        </ul>
+      </section>
+
+      <section class="mini">
+        <div class="mini-title">🛠 Technologies</div>
+        <ul>
+          <li>Python</li>
+          <li>SQL Server</li>
+          <li>Pandas</li>
+          <li>SQLAlchemy / pyodbc</li>
+          <li>XlsxWriter</li>
+          <li>Windows Task Scheduler</li>
+          <li>Git / GitHub</li>
+        </ul>
+      </section>
+
+      <section class="mini">
+        <div class="mini-title">🎯 Interview Value</div>
+        <ul>
+          <li>End-to-end pipeline ownership</li>
+          <li>Modular ETL design</li>
+          <li>Automation and scheduling</li>
+          <li>Business-ready reporting output</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="footer-note">Designed for browser viewing, project documentation, GitHub README screenshots, and interview explanation.</div>
+  </div>
+</body>
+</html>

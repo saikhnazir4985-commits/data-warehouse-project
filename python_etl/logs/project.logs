@@ -1,0 +1,1326 @@
+2026-06-17 21:13:40,654 |INFO | ================================================================================
+2026-06-17 21:13:40,655 |INFO | ETL PROCESS STARTED
+2026-06-17 21:13:40,655 |INFO | ================================================================================
+2026-06-17 21:13:40,655 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:40,655 |INFO | Processing table: bronze.crm_cust_info
+2026-06-17 21:13:40,655 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\cust_info.csv
+2026-06-17 21:13:40,655 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:40,656 |INFO | [EXTRACT] Reading data from cust_info.csv ...
+2026-06-17 21:13:40,700 |INFO | [SUCCESS] Data extracted from cust_info.csv
+2026-06-17 21:13:40,700 |INFO | [INFO] Total rows extracted: 18494
+2026-06-17 21:13:40,700 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:13:40,711 |INFO | [PREVIEW] First 5 rows from cust_info.csv:
+    cst_id     cst_key cst_firstname cst_lastname cst_marital_status cst_gndr cst_create_date
+0  11000.0  AW00011000           Jon        Yang                   M        M      2025-10-06
+1  11001.0  AW00011001        Eugene      Huang                    S        M      2025-10-06
+2  11002.0  AW00011002         Ruben       Torres                  M        M      2025-10-06
+3  11003.0  AW00011003       Christy          Zhu                  S        F      2025-10-06
+4  11004.0  AW00011004     Elizabeth      Johnson                  S        F      2025-10-06
+2026-06-17 21:13:40,711 |INFO | [TRUNCATE] Truncating bronze.crm_cust_info ...
+2026-06-17 21:13:41,359 |INFO | [SUCCESS] bronze.crm_cust_info truncated successfully.
+2026-06-17 21:13:41,360 |INFO | [LOAD] Loading data into bronze.crm_cust_info ...
+2026-06-17 21:13:45,297 |INFO | [SUCCESS] Data loaded into bronze.crm_cust_info
+2026-06-17 21:13:45,298 |INFO | [VALIDATION] Checking row count in bronze.crm_cust_info ...
+2026-06-17 21:13:45,309 |INFO | [INFO] Row count after load for bronze.crm_cust_info: 18494
+2026-06-17 21:13:45,310 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:45,310 |INFO | Processing table: bronze.crm_prd_info
+2026-06-17 21:13:45,310 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\prd_info.csv
+2026-06-17 21:13:45,310 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:45,310 |INFO | [EXTRACT] Reading data from prd_info.csv ...
+2026-06-17 21:13:45,324 |INFO | [SUCCESS] Data extracted from prd_info.csv
+2026-06-17 21:13:45,324 |INFO | [INFO] Total rows extracted: 397
+2026-06-17 21:13:45,324 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:13:45,328 |INFO | [PREVIEW] First 5 rows from prd_info.csv:
+   prd_id           prd_key                     prd_nm  prd_cost prd_line prd_start_dt  prd_end_dt
+0     210  CO-RF-FR-R92B-58  HL Road Frame - Black- 58       NaN       R    2003-07-01         NaN
+1     211  CO-RF-FR-R92R-58    HL Road Frame - Red- 58       NaN       R    2003-07-01         NaN
+2     212   AC-HE-HL-U509-R      Sport-100 Helmet- Red      12.0       S    2011-07-01  2007-12-28
+3     213   AC-HE-HL-U509-R      Sport-100 Helmet- Red      14.0       S    2012-07-01  2008-12-27
+4     214   AC-HE-HL-U509-R      Sport-100 Helmet- Red      13.0       S    2013-07-01         NaN
+2026-06-17 21:13:45,329 |INFO | [TRUNCATE] Truncating bronze.crm_prd_info ...
+2026-06-17 21:13:45,354 |INFO | [SUCCESS] bronze.crm_prd_info truncated successfully.
+2026-06-17 21:13:45,354 |INFO | [LOAD] Loading data into bronze.crm_prd_info ...
+2026-06-17 21:13:45,951 |INFO | [SUCCESS] Data loaded into bronze.crm_prd_info
+2026-06-17 21:13:45,952 |INFO | [VALIDATION] Checking row count in bronze.crm_prd_info ...
+2026-06-17 21:13:45,958 |INFO | [INFO] Row count after load for bronze.crm_prd_info: 397
+2026-06-17 21:13:45,959 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:45,959 |INFO | Processing table: bronze.crm_sales_details
+2026-06-17 21:13:45,959 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\sales_details.csv
+2026-06-17 21:13:45,959 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:45,959 |INFO | [EXTRACT] Reading data from sales_details.csv ...
+2026-06-17 21:13:46,035 |INFO | [SUCCESS] Data extracted from sales_details.csv
+2026-06-17 21:13:46,035 |INFO | [INFO] Total rows extracted: 60398
+2026-06-17 21:13:46,035 |INFO | [INFO] Total columns extracted: 9
+2026-06-17 21:13:46,036 |INFO | [PREVIEW] First 5 rows from sales_details.csv:
+  sls_ord_num sls_prd_key  sls_cust_id  sls_order_dt  sls_ship_dt  sls_due_dt  sls_sales  sls_quantity  sls_price
+0     SO43697  BK-R93R-62        21768      20101229     20110105    20110110     3578.0             1     3578.0
+1     SO43698  BK-M82S-44        28389      20101229     20110105    20110110     3400.0             1     3400.0
+2     SO43699  BK-M82S-44        25863      20101229     20110105    20110110     3400.0             1     3400.0
+3     SO43700  BK-R50B-62        14501      20101229     20110105    20110110      699.0             1      699.0
+4     SO43701  BK-M82S-44        11003      20101229     20110105    20110110     3400.0             1     3400.0
+2026-06-17 21:13:46,037 |INFO | [TRUNCATE] Truncating bronze.crm_sales_details ...
+2026-06-17 21:13:46,050 |INFO | [SUCCESS] bronze.crm_sales_details truncated successfully.
+2026-06-17 21:13:46,051 |INFO | [LOAD] Loading data into bronze.crm_sales_details ...
+2026-06-17 21:13:52,166 |INFO | [SUCCESS] Data loaded into bronze.crm_sales_details
+2026-06-17 21:13:52,167 |INFO | [VALIDATION] Checking row count in bronze.crm_sales_details ...
+2026-06-17 21:13:52,182 |INFO | [INFO] Row count after load for bronze.crm_sales_details: 60398
+2026-06-17 21:13:52,183 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:52,183 |INFO | Processing table: bronze.erp_cust_az12
+2026-06-17 21:13:52,183 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\CUST_AZ12.csv
+2026-06-17 21:13:52,184 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:52,184 |INFO | [EXTRACT] Reading data from cust_az12.csv ...
+2026-06-17 21:13:52,212 |INFO | [SUCCESS] Data extracted from cust_az12.csv
+2026-06-17 21:13:52,212 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:13:52,212 |INFO | [INFO] Total columns extracted: 3
+2026-06-17 21:13:52,213 |INFO | [PREVIEW] First 5 rows from cust_az12.csv:
+             CID       BDATE     GEN
+0  NASAW00011000  1971-10-06    Male
+1  NASAW00011001  1976-05-10    Male
+2  NASAW00011002  1971-02-09    Male
+3  NASAW00011003  1973-08-14  Female
+4  NASAW00011004  1979-08-05  Female
+2026-06-17 21:13:52,214 |INFO | [TRUNCATE] Truncating bronze.erp_cust_az12 ...
+2026-06-17 21:13:52,228 |INFO | [SUCCESS] bronze.erp_cust_az12 truncated successfully.
+2026-06-17 21:13:52,228 |INFO | [LOAD] Loading data into bronze.erp_cust_az12 ...
+2026-06-17 21:13:53,704 |INFO | [SUCCESS] Data loaded into bronze.erp_cust_az12
+2026-06-17 21:13:53,704 |INFO | [VALIDATION] Checking row count in bronze.erp_cust_az12 ...
+2026-06-17 21:13:53,714 |INFO | [INFO] Row count after load for bronze.erp_cust_az12: 18484
+2026-06-17 21:13:53,715 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:53,716 |INFO | Processing table: bronze.erp_loc_a101
+2026-06-17 21:13:53,716 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\LOC_A101.csv
+2026-06-17 21:13:53,716 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:53,716 |INFO | [EXTRACT] Reading data from loc_a101.csv ...
+2026-06-17 21:13:53,763 |INFO | [SUCCESS] Data extracted from loc_a101.csv
+2026-06-17 21:13:53,763 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:13:53,763 |INFO | [INFO] Total columns extracted: 2
+2026-06-17 21:13:53,764 |INFO | [PREVIEW] First 5 rows from loc_a101.csv:
+           CID      CNTRY
+0  AW-00011000  Australia
+1  AW-00011001  Australia
+2  AW-00011002  Australia
+3  AW-00011003  Australia
+4  AW-00011004  Australia
+2026-06-17 21:13:53,764 |INFO | [TRUNCATE] Truncating bronze.erp_loc_a101 ...
+2026-06-17 21:13:53,777 |INFO | [SUCCESS] bronze.erp_loc_a101 truncated successfully.
+2026-06-17 21:13:53,777 |INFO | [LOAD] Loading data into bronze.erp_loc_a101 ...
+2026-06-17 21:13:54,907 |INFO | [SUCCESS] Data loaded into bronze.erp_loc_a101
+2026-06-17 21:13:54,908 |INFO | [VALIDATION] Checking row count in bronze.erp_loc_a101 ...
+2026-06-17 21:13:54,920 |INFO | [INFO] Row count after load for bronze.erp_loc_a101: 18484
+2026-06-17 21:13:54,921 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:54,922 |INFO | Processing table: bronze.erp_px_cat_g1v2
+2026-06-17 21:13:54,922 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\PX_CAT_G1V2.csv
+2026-06-17 21:13:54,922 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:13:54,922 |INFO | [EXTRACT] Reading data from px_cat_g1v2.csv ...
+2026-06-17 21:13:54,936 |INFO | [SUCCESS] Data extracted from px_cat_g1v2.csv
+2026-06-17 21:13:54,936 |INFO | [INFO] Total rows extracted: 37
+2026-06-17 21:13:54,936 |INFO | [INFO] Total columns extracted: 4
+2026-06-17 21:13:54,938 |INFO | [PREVIEW] First 5 rows from px_cat_g1v2.csv:
+      ID          CAT             SUBCAT MAINTENANCE
+0  AC_BR  Accessories         Bike Racks         Yes
+1  AC_BS  Accessories        Bike Stands          No
+2  AC_BC  Accessories  Bottles and Cages          No
+3  AC_CL  Accessories           Cleaners         Yes
+4  AC_FE  Accessories            Fenders          No
+2026-06-17 21:13:54,939 |INFO | [TRUNCATE] Truncating bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:13:54,950 |INFO | [SUCCESS] bronze.erp_px_cat_g1v2 truncated successfully.
+2026-06-17 21:13:54,950 |INFO | [LOAD] Loading data into bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:13:54,970 |INFO | [SUCCESS] Data loaded into bronze.erp_px_cat_g1v2
+2026-06-17 21:13:54,971 |INFO | [VALIDATION] Checking row count in bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:13:54,979 |INFO | [INFO] Row count after load for bronze.erp_px_cat_g1v2: 37
+2026-06-17 21:13:54,981 |INFO | ================================================================================
+2026-06-17 21:13:54,981 |INFO | STARTING PROCEDURE EXECUTION: silver.load_silver
+2026-06-17 21:13:54,981 |INFO | ================================================================================
+2026-06-17 21:13:54,981 |INFO | [EXECUTING] EXEC silver.load_silver
+2026-06-17 21:13:56,401 |INFO | [SUCCESS] Procedure 'silver.load_silver' executed successfully.
+2026-06-17 21:13:56,402 |INFO | ==================================================
+2026-06-17 21:13:56,402 |INFO | Validating Gold Layer
+2026-06-17 21:13:56,402 |INFO | ==================================================
+2026-06-17 21:13:56,639 |INFO | gold.dim_customers rows: 18484
+2026-06-17 21:13:56,661 |INFO | gold.dim_products rows: 295
+2026-06-17 21:13:57,241 |INFO | gold.fact_sales rows: 60398
+2026-06-17 21:13:57,243 |INFO | ================================================================================
+2026-06-17 21:13:57,243 |INFO | ETL PROCESS COMPLETED SUCCESSFULLY
+2026-06-17 21:13:57,243 |INFO | ================================================================================
+2026-06-17 21:14:51,407 |INFO | ================================================================================
+2026-06-17 21:14:51,407 |INFO | ETL PROCESS STARTED
+2026-06-17 21:14:51,407 |INFO | ================================================================================
+2026-06-17 21:14:51,407 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:14:51,407 |INFO | Processing table: bronze.crm_cust_info
+2026-06-17 21:14:51,408 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\cust_info.csv
+2026-06-17 21:14:51,408 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:14:51,408 |INFO | [EXTRACT] Reading data from cust_info.csv ...
+2026-06-17 21:14:51,427 |INFO | [SUCCESS] Data extracted from cust_info.csv
+2026-06-17 21:14:51,427 |INFO | [INFO] Total rows extracted: 18494
+2026-06-17 21:14:51,427 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:14:51,433 |INFO | [PREVIEW] First 5 rows from cust_info.csv:
+    cst_id     cst_key cst_firstname cst_lastname cst_marital_status cst_gndr cst_create_date
+0  11000.0  AW00011000           Jon        Yang                   M        M      2025-10-06
+1  11001.0  AW00011001        Eugene      Huang                    S        M      2025-10-06
+2  11002.0  AW00011002         Ruben       Torres                  M        M      2025-10-06
+3  11003.0  AW00011003       Christy          Zhu                  S        F      2025-10-06
+4  11004.0  AW00011004     Elizabeth      Johnson                  S        F      2025-10-06
+2026-06-17 21:14:51,433 |INFO | [TRUNCATE] Truncating bronze.crm_cust_info ...
+2026-06-17 21:14:52,033 |INFO | [SUCCESS] bronze.crm_cust_info truncated successfully.
+2026-06-17 21:14:52,034 |INFO | [LOAD] Loading data into bronze.crm_cust_info ...
+2026-06-17 21:14:56,865 |INFO | [SUCCESS] Data loaded into bronze.crm_cust_info
+2026-06-17 21:14:56,866 |INFO | [VALIDATION] Checking row count in bronze.crm_cust_info ...
+2026-06-17 21:14:56,886 |INFO | [INFO] Row count after load for bronze.crm_cust_info: 18494
+2026-06-17 21:14:56,887 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:14:56,887 |INFO | Processing table: bronze.crm_prd_info
+2026-06-17 21:14:56,887 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\prd_info.csv
+2026-06-17 21:14:56,887 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:14:56,887 |INFO | [EXTRACT] Reading data from prd_info.csv ...
+2026-06-17 21:14:56,891 |INFO | [SUCCESS] Data extracted from prd_info.csv
+2026-06-17 21:14:56,891 |INFO | [INFO] Total rows extracted: 397
+2026-06-17 21:14:56,891 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:14:56,892 |INFO | [PREVIEW] First 5 rows from prd_info.csv:
+   prd_id           prd_key                     prd_nm  prd_cost prd_line prd_start_dt  prd_end_dt
+0     210  CO-RF-FR-R92B-58  HL Road Frame - Black- 58       NaN       R    2003-07-01         NaN
+1     211  CO-RF-FR-R92R-58    HL Road Frame - Red- 58       NaN       R    2003-07-01         NaN
+2     212   AC-HE-HL-U509-R      Sport-100 Helmet- Red      12.0       S    2011-07-01  2007-12-28
+3     213   AC-HE-HL-U509-R      Sport-100 Helmet- Red      14.0       S    2012-07-01  2008-12-27
+4     214   AC-HE-HL-U509-R      Sport-100 Helmet- Red      13.0       S    2013-07-01         NaN
+2026-06-17 21:14:56,893 |INFO | [TRUNCATE] Truncating bronze.crm_prd_info ...
+2026-06-17 21:14:56,920 |INFO | [SUCCESS] bronze.crm_prd_info truncated successfully.
+2026-06-17 21:14:56,921 |INFO | [LOAD] Loading data into bronze.crm_prd_info ...
+2026-06-17 21:14:57,591 |INFO | [SUCCESS] Data loaded into bronze.crm_prd_info
+2026-06-17 21:14:57,592 |INFO | [VALIDATION] Checking row count in bronze.crm_prd_info ...
+2026-06-17 21:14:57,597 |INFO | [INFO] Row count after load for bronze.crm_prd_info: 397
+2026-06-17 21:14:57,598 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:14:57,598 |INFO | Processing table: bronze.crm_sales_details
+2026-06-17 21:14:57,598 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\sales_details.csv
+2026-06-17 21:14:57,598 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:14:57,599 |INFO | [EXTRACT] Reading data from sales_details.csv ...
+2026-06-17 21:14:57,660 |INFO | [SUCCESS] Data extracted from sales_details.csv
+2026-06-17 21:14:57,660 |INFO | [INFO] Total rows extracted: 60398
+2026-06-17 21:14:57,660 |INFO | [INFO] Total columns extracted: 9
+2026-06-17 21:14:57,663 |INFO | [PREVIEW] First 5 rows from sales_details.csv:
+  sls_ord_num sls_prd_key  sls_cust_id  sls_order_dt  sls_ship_dt  sls_due_dt  sls_sales  sls_quantity  sls_price
+0     SO43697  BK-R93R-62        21768      20101229     20110105    20110110     3578.0             1     3578.0
+1     SO43698  BK-M82S-44        28389      20101229     20110105    20110110     3400.0             1     3400.0
+2     SO43699  BK-M82S-44        25863      20101229     20110105    20110110     3400.0             1     3400.0
+3     SO43700  BK-R50B-62        14501      20101229     20110105    20110110      699.0             1      699.0
+4     SO43701  BK-M82S-44        11003      20101229     20110105    20110110     3400.0             1     3400.0
+2026-06-17 21:14:57,664 |INFO | [TRUNCATE] Truncating bronze.crm_sales_details ...
+2026-06-17 21:14:57,676 |INFO | [SUCCESS] bronze.crm_sales_details truncated successfully.
+2026-06-17 21:14:57,677 |INFO | [LOAD] Loading data into bronze.crm_sales_details ...
+2026-06-17 21:15:05,824 |INFO | [SUCCESS] Data loaded into bronze.crm_sales_details
+2026-06-17 21:15:05,825 |INFO | [VALIDATION] Checking row count in bronze.crm_sales_details ...
+2026-06-17 21:15:05,847 |INFO | [INFO] Row count after load for bronze.crm_sales_details: 60398
+2026-06-17 21:15:05,848 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:15:05,849 |INFO | Processing table: bronze.erp_cust_az12
+2026-06-17 21:15:05,849 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\CUST_AZ12.csv
+2026-06-17 21:15:05,849 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:15:05,850 |INFO | [EXTRACT] Reading data from cust_az12.csv ...
+2026-06-17 21:15:05,872 |INFO | [SUCCESS] Data extracted from cust_az12.csv
+2026-06-17 21:15:05,872 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:15:05,872 |INFO | [INFO] Total columns extracted: 3
+2026-06-17 21:15:05,873 |INFO | [PREVIEW] First 5 rows from cust_az12.csv:
+             CID       BDATE     GEN
+0  NASAW00011000  1971-10-06    Male
+1  NASAW00011001  1976-05-10    Male
+2  NASAW00011002  1971-02-09    Male
+3  NASAW00011003  1973-08-14  Female
+4  NASAW00011004  1979-08-05  Female
+2026-06-17 21:15:05,874 |INFO | [TRUNCATE] Truncating bronze.erp_cust_az12 ...
+2026-06-17 21:15:05,887 |INFO | [SUCCESS] bronze.erp_cust_az12 truncated successfully.
+2026-06-17 21:15:05,888 |INFO | [LOAD] Loading data into bronze.erp_cust_az12 ...
+2026-06-17 21:15:08,136 |INFO | [SUCCESS] Data loaded into bronze.erp_cust_az12
+2026-06-17 21:15:08,137 |INFO | [VALIDATION] Checking row count in bronze.erp_cust_az12 ...
+2026-06-17 21:15:08,145 |INFO | [INFO] Row count after load for bronze.erp_cust_az12: 18484
+2026-06-17 21:15:08,146 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:15:08,146 |INFO | Processing table: bronze.erp_loc_a101
+2026-06-17 21:15:08,146 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\LOC_A101.csv
+2026-06-17 21:15:08,147 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:15:08,147 |INFO | [EXTRACT] Reading data from loc_a101.csv ...
+2026-06-17 21:15:08,161 |INFO | [SUCCESS] Data extracted from loc_a101.csv
+2026-06-17 21:15:08,162 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:15:08,162 |INFO | [INFO] Total columns extracted: 2
+2026-06-17 21:15:08,163 |INFO | [PREVIEW] First 5 rows from loc_a101.csv:
+           CID      CNTRY
+0  AW-00011000  Australia
+1  AW-00011001  Australia
+2  AW-00011002  Australia
+3  AW-00011003  Australia
+4  AW-00011004  Australia
+2026-06-17 21:15:08,163 |INFO | [TRUNCATE] Truncating bronze.erp_loc_a101 ...
+2026-06-17 21:15:08,175 |INFO | [SUCCESS] bronze.erp_loc_a101 truncated successfully.
+2026-06-17 21:15:08,175 |INFO | [LOAD] Loading data into bronze.erp_loc_a101 ...
+2026-06-17 21:15:09,447 |INFO | [SUCCESS] Data loaded into bronze.erp_loc_a101
+2026-06-17 21:15:09,448 |INFO | [VALIDATION] Checking row count in bronze.erp_loc_a101 ...
+2026-06-17 21:15:09,471 |INFO | [INFO] Row count after load for bronze.erp_loc_a101: 18484
+2026-06-17 21:15:09,473 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:15:09,474 |INFO | Processing table: bronze.erp_px_cat_g1v2
+2026-06-17 21:15:09,474 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\PX_CAT_G1V2.csv
+2026-06-17 21:15:09,474 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:15:09,475 |INFO | [EXTRACT] Reading data from px_cat_g1v2.csv ...
+2026-06-17 21:15:09,477 |INFO | [SUCCESS] Data extracted from px_cat_g1v2.csv
+2026-06-17 21:15:09,477 |INFO | [INFO] Total rows extracted: 37
+2026-06-17 21:15:09,478 |INFO | [INFO] Total columns extracted: 4
+2026-06-17 21:15:09,480 |INFO | [PREVIEW] First 5 rows from px_cat_g1v2.csv:
+      ID          CAT             SUBCAT MAINTENANCE
+0  AC_BR  Accessories         Bike Racks         Yes
+1  AC_BS  Accessories        Bike Stands          No
+2  AC_BC  Accessories  Bottles and Cages          No
+3  AC_CL  Accessories           Cleaners         Yes
+4  AC_FE  Accessories            Fenders          No
+2026-06-17 21:15:09,481 |INFO | [TRUNCATE] Truncating bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:15:09,494 |INFO | [SUCCESS] bronze.erp_px_cat_g1v2 truncated successfully.
+2026-06-17 21:15:09,495 |INFO | [LOAD] Loading data into bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:15:09,518 |INFO | [SUCCESS] Data loaded into bronze.erp_px_cat_g1v2
+2026-06-17 21:15:09,518 |INFO | [VALIDATION] Checking row count in bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:15:09,525 |INFO | [INFO] Row count after load for bronze.erp_px_cat_g1v2: 37
+2026-06-17 21:15:09,527 |INFO | ================================================================================
+2026-06-17 21:15:09,527 |INFO | STARTING PROCEDURE EXECUTION: silver.load_silver
+2026-06-17 21:15:09,527 |INFO | ================================================================================
+2026-06-17 21:15:09,528 |INFO | [EXECUTING] EXEC silver.load_silver
+2026-06-17 21:15:11,211 |INFO | [SUCCESS] Procedure 'silver.load_silver' executed successfully.
+2026-06-17 21:15:11,213 |INFO | ==================================================
+2026-06-17 21:15:11,213 |INFO | Validating Gold Layer
+2026-06-17 21:15:11,213 |INFO | ==================================================
+2026-06-17 21:15:11,437 |INFO | gold.dim_customers rows: 18484
+2026-06-17 21:15:11,463 |INFO | gold.dim_products rows: 295
+2026-06-17 21:15:12,061 |INFO | gold.fact_sales rows: 60398
+2026-06-17 21:15:12,063 |INFO | ================================================================================
+2026-06-17 21:15:12,063 |INFO | ETL PROCESS COMPLETED SUCCESSFULLY
+2026-06-17 21:15:12,063 |INFO | ================================================================================
+2026-06-17 21:17:59,728 |INFO | ================================================================================
+2026-06-17 21:17:59,728 |INFO | ETL PROCESS STARTED
+2026-06-17 21:17:59,728 |INFO | ================================================================================
+2026-06-17 21:17:59,729 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:17:59,729 |INFO | Processing table: bronze.crm_cust_info
+2026-06-17 21:17:59,729 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\cust_info.csv
+2026-06-17 21:17:59,729 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:17:59,729 |INFO | [EXTRACT] Reading data from cust_info.csv ...
+2026-06-17 21:17:59,748 |INFO | [SUCCESS] Data extracted from cust_info.csv
+2026-06-17 21:17:59,749 |INFO | [INFO] Total rows extracted: 18494
+2026-06-17 21:17:59,749 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:17:59,759 |INFO | [PREVIEW] First 5 rows from cust_info.csv:
+    cst_id     cst_key cst_firstname cst_lastname cst_marital_status cst_gndr cst_create_date
+0  11000.0  AW00011000           Jon        Yang                   M        M      2025-10-06
+1  11001.0  AW00011001        Eugene      Huang                    S        M      2025-10-06
+2  11002.0  AW00011002         Ruben       Torres                  M        M      2025-10-06
+3  11003.0  AW00011003       Christy          Zhu                  S        F      2025-10-06
+4  11004.0  AW00011004     Elizabeth      Johnson                  S        F      2025-10-06
+2026-06-17 21:17:59,760 |INFO | [TRUNCATE] Truncating bronze.crm_cust_info ...
+2026-06-17 21:18:00,327 |INFO | [SUCCESS] bronze.crm_cust_info truncated successfully.
+2026-06-17 21:18:00,327 |INFO | [LOAD] Loading data into bronze.crm_cust_info ...
+2026-06-17 21:18:04,343 |INFO | [SUCCESS] Data loaded into bronze.crm_cust_info
+2026-06-17 21:18:04,343 |INFO | [VALIDATION] Checking row count in bronze.crm_cust_info ...
+2026-06-17 21:18:04,352 |INFO | [INFO] Row count after load for bronze.crm_cust_info: 18494
+2026-06-17 21:18:04,353 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:04,353 |INFO | Processing table: bronze.crm_prd_info
+2026-06-17 21:18:04,354 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\prd_info.csv
+2026-06-17 21:18:04,354 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:04,355 |INFO | [EXTRACT] Reading data from prd_info.csv ...
+2026-06-17 21:18:04,359 |INFO | [SUCCESS] Data extracted from prd_info.csv
+2026-06-17 21:18:04,359 |INFO | [INFO] Total rows extracted: 397
+2026-06-17 21:18:04,359 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:18:04,361 |INFO | [PREVIEW] First 5 rows from prd_info.csv:
+   prd_id           prd_key                     prd_nm  prd_cost prd_line prd_start_dt  prd_end_dt
+0     210  CO-RF-FR-R92B-58  HL Road Frame - Black- 58       NaN       R    2003-07-01         NaN
+1     211  CO-RF-FR-R92R-58    HL Road Frame - Red- 58       NaN       R    2003-07-01         NaN
+2     212   AC-HE-HL-U509-R      Sport-100 Helmet- Red      12.0       S    2011-07-01  2007-12-28
+3     213   AC-HE-HL-U509-R      Sport-100 Helmet- Red      14.0       S    2012-07-01  2008-12-27
+4     214   AC-HE-HL-U509-R      Sport-100 Helmet- Red      13.0       S    2013-07-01         NaN
+2026-06-17 21:18:04,362 |INFO | [TRUNCATE] Truncating bronze.crm_prd_info ...
+2026-06-17 21:18:04,374 |INFO | [SUCCESS] bronze.crm_prd_info truncated successfully.
+2026-06-17 21:18:04,374 |INFO | [LOAD] Loading data into bronze.crm_prd_info ...
+2026-06-17 21:18:04,941 |INFO | [SUCCESS] Data loaded into bronze.crm_prd_info
+2026-06-17 21:18:04,941 |INFO | [VALIDATION] Checking row count in bronze.crm_prd_info ...
+2026-06-17 21:18:04,950 |INFO | [INFO] Row count after load for bronze.crm_prd_info: 397
+2026-06-17 21:18:04,951 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:04,951 |INFO | Processing table: bronze.crm_sales_details
+2026-06-17 21:18:04,951 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\sales_details.csv
+2026-06-17 21:18:04,951 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:04,951 |INFO | [EXTRACT] Reading data from sales_details.csv ...
+2026-06-17 21:18:05,020 |INFO | [SUCCESS] Data extracted from sales_details.csv
+2026-06-17 21:18:05,020 |INFO | [INFO] Total rows extracted: 60398
+2026-06-17 21:18:05,020 |INFO | [INFO] Total columns extracted: 9
+2026-06-17 21:18:05,022 |INFO | [PREVIEW] First 5 rows from sales_details.csv:
+  sls_ord_num sls_prd_key  sls_cust_id  sls_order_dt  sls_ship_dt  sls_due_dt  sls_sales  sls_quantity  sls_price
+0     SO43697  BK-R93R-62        21768      20101229     20110105    20110110     3578.0             1     3578.0
+1     SO43698  BK-M82S-44        28389      20101229     20110105    20110110     3400.0             1     3400.0
+2     SO43699  BK-M82S-44        25863      20101229     20110105    20110110     3400.0             1     3400.0
+3     SO43700  BK-R50B-62        14501      20101229     20110105    20110110      699.0             1      699.0
+4     SO43701  BK-M82S-44        11003      20101229     20110105    20110110     3400.0             1     3400.0
+2026-06-17 21:18:05,022 |INFO | [TRUNCATE] Truncating bronze.crm_sales_details ...
+2026-06-17 21:18:05,035 |INFO | [SUCCESS] bronze.crm_sales_details truncated successfully.
+2026-06-17 21:18:05,035 |INFO | [LOAD] Loading data into bronze.crm_sales_details ...
+2026-06-17 21:18:12,194 |INFO | [SUCCESS] Data loaded into bronze.crm_sales_details
+2026-06-17 21:18:12,195 |INFO | [VALIDATION] Checking row count in bronze.crm_sales_details ...
+2026-06-17 21:18:12,228 |INFO | [INFO] Row count after load for bronze.crm_sales_details: 60398
+2026-06-17 21:18:12,228 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:12,229 |INFO | Processing table: bronze.erp_cust_az12
+2026-06-17 21:18:12,229 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\CUST_AZ12.csv
+2026-06-17 21:18:12,229 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:12,230 |INFO | [EXTRACT] Reading data from cust_az12.csv ...
+2026-06-17 21:18:12,252 |INFO | [SUCCESS] Data extracted from cust_az12.csv
+2026-06-17 21:18:12,252 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:18:12,252 |INFO | [INFO] Total columns extracted: 3
+2026-06-17 21:18:12,253 |INFO | [PREVIEW] First 5 rows from cust_az12.csv:
+             CID       BDATE     GEN
+0  NASAW00011000  1971-10-06    Male
+1  NASAW00011001  1976-05-10    Male
+2  NASAW00011002  1971-02-09    Male
+3  NASAW00011003  1973-08-14  Female
+4  NASAW00011004  1979-08-05  Female
+2026-06-17 21:18:12,254 |INFO | [TRUNCATE] Truncating bronze.erp_cust_az12 ...
+2026-06-17 21:18:12,270 |INFO | [SUCCESS] bronze.erp_cust_az12 truncated successfully.
+2026-06-17 21:18:12,270 |INFO | [LOAD] Loading data into bronze.erp_cust_az12 ...
+2026-06-17 21:18:13,848 |INFO | [SUCCESS] Data loaded into bronze.erp_cust_az12
+2026-06-17 21:18:13,849 |INFO | [VALIDATION] Checking row count in bronze.erp_cust_az12 ...
+2026-06-17 21:18:13,861 |INFO | [INFO] Row count after load for bronze.erp_cust_az12: 18484
+2026-06-17 21:18:13,862 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:13,863 |INFO | Processing table: bronze.erp_loc_a101
+2026-06-17 21:18:13,863 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\LOC_A101.csv
+2026-06-17 21:18:13,863 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:13,863 |INFO | [EXTRACT] Reading data from loc_a101.csv ...
+2026-06-17 21:18:13,882 |INFO | [SUCCESS] Data extracted from loc_a101.csv
+2026-06-17 21:18:13,883 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:18:13,883 |INFO | [INFO] Total columns extracted: 2
+2026-06-17 21:18:13,885 |INFO | [PREVIEW] First 5 rows from loc_a101.csv:
+           CID      CNTRY
+0  AW-00011000  Australia
+1  AW-00011001  Australia
+2  AW-00011002  Australia
+3  AW-00011003  Australia
+4  AW-00011004  Australia
+2026-06-17 21:18:13,885 |INFO | [TRUNCATE] Truncating bronze.erp_loc_a101 ...
+2026-06-17 21:18:13,905 |INFO | [SUCCESS] bronze.erp_loc_a101 truncated successfully.
+2026-06-17 21:18:13,906 |INFO | [LOAD] Loading data into bronze.erp_loc_a101 ...
+2026-06-17 21:18:14,974 |INFO | [SUCCESS] Data loaded into bronze.erp_loc_a101
+2026-06-17 21:18:14,974 |INFO | [VALIDATION] Checking row count in bronze.erp_loc_a101 ...
+2026-06-17 21:18:14,985 |INFO | [INFO] Row count after load for bronze.erp_loc_a101: 18484
+2026-06-17 21:18:14,986 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:14,987 |INFO | Processing table: bronze.erp_px_cat_g1v2
+2026-06-17 21:18:14,987 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\PX_CAT_G1V2.csv
+2026-06-17 21:18:14,987 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:18:14,987 |INFO | [EXTRACT] Reading data from px_cat_g1v2.csv ...
+2026-06-17 21:18:14,989 |INFO | [SUCCESS] Data extracted from px_cat_g1v2.csv
+2026-06-17 21:18:14,990 |INFO | [INFO] Total rows extracted: 37
+2026-06-17 21:18:14,990 |INFO | [INFO] Total columns extracted: 4
+2026-06-17 21:18:14,992 |INFO | [PREVIEW] First 5 rows from px_cat_g1v2.csv:
+      ID          CAT             SUBCAT MAINTENANCE
+0  AC_BR  Accessories         Bike Racks         Yes
+1  AC_BS  Accessories        Bike Stands          No
+2  AC_BC  Accessories  Bottles and Cages          No
+3  AC_CL  Accessories           Cleaners         Yes
+4  AC_FE  Accessories            Fenders          No
+2026-06-17 21:18:14,995 |INFO | [TRUNCATE] Truncating bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:18:15,006 |INFO | [SUCCESS] bronze.erp_px_cat_g1v2 truncated successfully.
+2026-06-17 21:18:15,007 |INFO | [LOAD] Loading data into bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:18:15,024 |INFO | [SUCCESS] Data loaded into bronze.erp_px_cat_g1v2
+2026-06-17 21:18:15,025 |INFO | [VALIDATION] Checking row count in bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:18:15,031 |INFO | [INFO] Row count after load for bronze.erp_px_cat_g1v2: 37
+2026-06-17 21:18:15,035 |INFO | ================================================================================
+2026-06-17 21:18:15,035 |INFO | STARTING PROCEDURE EXECUTION: silver.load_silver
+2026-06-17 21:18:15,035 |INFO | ================================================================================
+2026-06-17 21:18:15,036 |INFO | [EXECUTING] EXEC silver.load_silver
+2026-06-17 21:18:16,428 |INFO | [SUCCESS] Procedure 'silver.load_silver' executed successfully.
+2026-06-17 21:18:16,429 |INFO | ==================================================
+2026-06-17 21:18:16,429 |INFO | Validating Gold Layer
+2026-06-17 21:18:16,429 |INFO | ==================================================
+2026-06-17 21:18:16,639 |INFO | gold.dim_customers rows: 18484
+2026-06-17 21:18:16,656 |INFO | gold.dim_products rows: 295
+2026-06-17 21:18:17,094 |INFO | gold.fact_sales rows: 60398
+2026-06-17 21:18:17,096 |INFO | ================================================================================
+2026-06-17 21:18:17,096 |INFO | ETL PROCESS COMPLETED SUCCESSFULLY
+2026-06-17 21:18:17,096 |INFO | ================================================================================
+2026-06-17 21:37:15,734 |INFO | ================================================================================
+2026-06-17 21:37:15,734 |INFO | ETL PROCESS STARTED
+2026-06-17 21:37:15,734 |INFO | ================================================================================
+2026-06-17 21:37:15,734 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:15,734 |INFO | Processing table: bronze.crm_cust_info
+2026-06-17 21:37:15,734 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\cust_info.csv
+2026-06-17 21:37:15,734 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:15,734 |INFO | [EXTRACT] Reading data from cust_info.csv ...
+2026-06-17 21:37:15,754 |INFO | [SUCCESS] Data extracted from cust_info.csv
+2026-06-17 21:37:15,754 |INFO | [INFO] Total rows extracted: 18494
+2026-06-17 21:37:15,754 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:37:15,763 |INFO | [PREVIEW] First 5 rows from cust_info.csv:
+    cst_id     cst_key cst_firstname cst_lastname cst_marital_status cst_gndr cst_create_date
+0  11000.0  AW00011000           Jon        Yang                   M        M      2025-10-06
+1  11001.0  AW00011001        Eugene      Huang                    S        M      2025-10-06
+2  11002.0  AW00011002         Ruben       Torres                  M        M      2025-10-06
+3  11003.0  AW00011003       Christy          Zhu                  S        F      2025-10-06
+4  11004.0  AW00011004     Elizabeth      Johnson                  S        F      2025-10-06
+2026-06-17 21:37:15,764 |INFO | [TRUNCATE] Truncating bronze.crm_cust_info ...
+2026-06-17 21:37:16,352 |INFO | [SUCCESS] bronze.crm_cust_info truncated successfully.
+2026-06-17 21:37:16,352 |INFO | [LOAD] Loading data into bronze.crm_cust_info ...
+2026-06-17 21:37:20,560 |INFO | [SUCCESS] Data loaded into bronze.crm_cust_info
+2026-06-17 21:37:20,560 |INFO | [VALIDATION] Checking row count in bronze.crm_cust_info ...
+2026-06-17 21:37:20,577 |INFO | [INFO] Row count after load for bronze.crm_cust_info: 18494
+2026-06-17 21:37:20,578 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:20,579 |INFO | Processing table: bronze.crm_prd_info
+2026-06-17 21:37:20,579 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\prd_info.csv
+2026-06-17 21:37:20,579 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:20,580 |INFO | [EXTRACT] Reading data from prd_info.csv ...
+2026-06-17 21:37:20,586 |INFO | [SUCCESS] Data extracted from prd_info.csv
+2026-06-17 21:37:20,586 |INFO | [INFO] Total rows extracted: 397
+2026-06-17 21:37:20,586 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:37:20,588 |INFO | [PREVIEW] First 5 rows from prd_info.csv:
+   prd_id           prd_key                     prd_nm  prd_cost prd_line prd_start_dt  prd_end_dt
+0     210  CO-RF-FR-R92B-58  HL Road Frame - Black- 58       NaN       R    2003-07-01         NaN
+1     211  CO-RF-FR-R92R-58    HL Road Frame - Red- 58       NaN       R    2003-07-01         NaN
+2     212   AC-HE-HL-U509-R      Sport-100 Helmet- Red      12.0       S    2011-07-01  2007-12-28
+3     213   AC-HE-HL-U509-R      Sport-100 Helmet- Red      14.0       S    2012-07-01  2008-12-27
+4     214   AC-HE-HL-U509-R      Sport-100 Helmet- Red      13.0       S    2013-07-01         NaN
+2026-06-17 21:37:20,588 |INFO | [TRUNCATE] Truncating bronze.crm_prd_info ...
+2026-06-17 21:37:20,600 |INFO | [SUCCESS] bronze.crm_prd_info truncated successfully.
+2026-06-17 21:37:20,601 |INFO | [LOAD] Loading data into bronze.crm_prd_info ...
+2026-06-17 21:37:21,157 |INFO | [SUCCESS] Data loaded into bronze.crm_prd_info
+2026-06-17 21:37:21,157 |INFO | [VALIDATION] Checking row count in bronze.crm_prd_info ...
+2026-06-17 21:37:21,163 |INFO | [INFO] Row count after load for bronze.crm_prd_info: 397
+2026-06-17 21:37:21,164 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:21,165 |INFO | Processing table: bronze.crm_sales_details
+2026-06-17 21:37:21,165 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\sales_details.csv
+2026-06-17 21:37:21,165 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:21,165 |INFO | [EXTRACT] Reading data from sales_details.csv ...
+2026-06-17 21:37:21,231 |INFO | [SUCCESS] Data extracted from sales_details.csv
+2026-06-17 21:37:21,231 |INFO | [INFO] Total rows extracted: 60398
+2026-06-17 21:37:21,231 |INFO | [INFO] Total columns extracted: 9
+2026-06-17 21:37:21,237 |INFO | [PREVIEW] First 5 rows from sales_details.csv:
+  sls_ord_num sls_prd_key  sls_cust_id  sls_order_dt  sls_ship_dt  sls_due_dt  sls_sales  sls_quantity  sls_price
+0     SO43697  BK-R93R-62        21768      20101229     20110105    20110110     3578.0             1     3578.0
+1     SO43698  BK-M82S-44        28389      20101229     20110105    20110110     3400.0             1     3400.0
+2     SO43699  BK-M82S-44        25863      20101229     20110105    20110110     3400.0             1     3400.0
+3     SO43700  BK-R50B-62        14501      20101229     20110105    20110110      699.0             1      699.0
+4     SO43701  BK-M82S-44        11003      20101229     20110105    20110110     3400.0             1     3400.0
+2026-06-17 21:37:21,237 |INFO | [TRUNCATE] Truncating bronze.crm_sales_details ...
+2026-06-17 21:37:21,250 |INFO | [SUCCESS] bronze.crm_sales_details truncated successfully.
+2026-06-17 21:37:21,250 |INFO | [LOAD] Loading data into bronze.crm_sales_details ...
+2026-06-17 21:37:28,510 |INFO | [SUCCESS] Data loaded into bronze.crm_sales_details
+2026-06-17 21:37:28,511 |INFO | [VALIDATION] Checking row count in bronze.crm_sales_details ...
+2026-06-17 21:37:28,528 |INFO | [INFO] Row count after load for bronze.crm_sales_details: 60398
+2026-06-17 21:37:28,529 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:28,529 |INFO | Processing table: bronze.erp_cust_az12
+2026-06-17 21:37:28,529 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\CUST_AZ12.csv
+2026-06-17 21:37:28,529 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:28,529 |INFO | [EXTRACT] Reading data from cust_az12.csv ...
+2026-06-17 21:37:28,558 |INFO | [SUCCESS] Data extracted from cust_az12.csv
+2026-06-17 21:37:28,558 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:37:28,558 |INFO | [INFO] Total columns extracted: 3
+2026-06-17 21:37:28,559 |INFO | [PREVIEW] First 5 rows from cust_az12.csv:
+             CID       BDATE     GEN
+0  NASAW00011000  1971-10-06    Male
+1  NASAW00011001  1976-05-10    Male
+2  NASAW00011002  1971-02-09    Male
+3  NASAW00011003  1973-08-14  Female
+4  NASAW00011004  1979-08-05  Female
+2026-06-17 21:37:28,560 |INFO | [TRUNCATE] Truncating bronze.erp_cust_az12 ...
+2026-06-17 21:37:28,574 |INFO | [SUCCESS] bronze.erp_cust_az12 truncated successfully.
+2026-06-17 21:37:28,574 |INFO | [LOAD] Loading data into bronze.erp_cust_az12 ...
+2026-06-17 21:37:30,181 |INFO | [SUCCESS] Data loaded into bronze.erp_cust_az12
+2026-06-17 21:37:30,182 |INFO | [VALIDATION] Checking row count in bronze.erp_cust_az12 ...
+2026-06-17 21:37:30,189 |INFO | [INFO] Row count after load for bronze.erp_cust_az12: 18484
+2026-06-17 21:37:30,190 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:30,190 |INFO | Processing table: bronze.erp_loc_a101
+2026-06-17 21:37:30,190 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\LOC_A101.csv
+2026-06-17 21:37:30,190 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:30,190 |INFO | [EXTRACT] Reading data from loc_a101.csv ...
+2026-06-17 21:37:30,204 |INFO | [SUCCESS] Data extracted from loc_a101.csv
+2026-06-17 21:37:30,205 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:37:30,205 |INFO | [INFO] Total columns extracted: 2
+2026-06-17 21:37:30,205 |INFO | [PREVIEW] First 5 rows from loc_a101.csv:
+           CID      CNTRY
+0  AW-00011000  Australia
+1  AW-00011001  Australia
+2  AW-00011002  Australia
+3  AW-00011003  Australia
+4  AW-00011004  Australia
+2026-06-17 21:37:30,206 |INFO | [TRUNCATE] Truncating bronze.erp_loc_a101 ...
+2026-06-17 21:37:30,218 |INFO | [SUCCESS] bronze.erp_loc_a101 truncated successfully.
+2026-06-17 21:37:30,219 |INFO | [LOAD] Loading data into bronze.erp_loc_a101 ...
+2026-06-17 21:37:31,382 |INFO | [SUCCESS] Data loaded into bronze.erp_loc_a101
+2026-06-17 21:37:31,383 |INFO | [VALIDATION] Checking row count in bronze.erp_loc_a101 ...
+2026-06-17 21:37:31,392 |INFO | [INFO] Row count after load for bronze.erp_loc_a101: 18484
+2026-06-17 21:37:31,394 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:31,395 |INFO | Processing table: bronze.erp_px_cat_g1v2
+2026-06-17 21:37:31,395 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\PX_CAT_G1V2.csv
+2026-06-17 21:37:31,395 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:37:31,395 |INFO | [EXTRACT] Reading data from px_cat_g1v2.csv ...
+2026-06-17 21:37:31,399 |INFO | [SUCCESS] Data extracted from px_cat_g1v2.csv
+2026-06-17 21:37:31,399 |INFO | [INFO] Total rows extracted: 37
+2026-06-17 21:37:31,400 |INFO | [INFO] Total columns extracted: 4
+2026-06-17 21:37:31,400 |INFO | [PREVIEW] First 5 rows from px_cat_g1v2.csv:
+      ID          CAT             SUBCAT MAINTENANCE
+0  AC_BR  Accessories         Bike Racks         Yes
+1  AC_BS  Accessories        Bike Stands          No
+2  AC_BC  Accessories  Bottles and Cages          No
+3  AC_CL  Accessories           Cleaners         Yes
+4  AC_FE  Accessories            Fenders          No
+2026-06-17 21:37:31,401 |INFO | [TRUNCATE] Truncating bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:37:31,410 |INFO | [SUCCESS] bronze.erp_px_cat_g1v2 truncated successfully.
+2026-06-17 21:37:31,411 |INFO | [LOAD] Loading data into bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:37:31,433 |INFO | [SUCCESS] Data loaded into bronze.erp_px_cat_g1v2
+2026-06-17 21:37:31,434 |INFO | [VALIDATION] Checking row count in bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:37:31,439 |INFO | [INFO] Row count after load for bronze.erp_px_cat_g1v2: 37
+2026-06-17 21:37:31,442 |INFO | ================================================================================
+2026-06-17 21:37:31,443 |INFO | STARTING PROCEDURE EXECUTION: silver.load_silver
+2026-06-17 21:37:31,443 |INFO | ================================================================================
+2026-06-17 21:37:31,444 |INFO | [EXECUTING] EXEC silver.load_silver
+2026-06-17 21:37:32,933 |INFO | [SUCCESS] Procedure 'silver.load_silver' executed successfully.
+2026-06-17 21:37:32,934 |INFO | ==================================================
+2026-06-17 21:37:32,934 |INFO | Validating Gold Layer
+2026-06-17 21:37:32,934 |INFO | ==================================================
+2026-06-17 21:37:33,165 |INFO | gold.dim_customers rows: 18484
+2026-06-17 21:37:33,189 |INFO | gold.dim_products rows: 295
+2026-06-17 21:37:33,722 |INFO | gold.fact_sales rows: 60398
+2026-06-17 21:37:33,724 |INFO | ================================================================================
+2026-06-17 21:37:33,724 |INFO | ETL PROCESS COMPLETED SUCCESSFULLY
+2026-06-17 21:37:33,724 |INFO | ================================================================================
+2026-06-17 21:45:44,096 |ERROR | ETL failed! Error: 'int' object is not callable
+Traceback (most recent call last):
+  File "c:\Project_2\data_warehouse_project\python_etl\main.py", line 15, in <module>
+    print(f"etl_start_time: {etl_start_time.microsecond()}")
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'int' object is not callable
+2026-06-17 21:46:09,727 |ERROR | ETL failed! Error: unsupported operand type(s) for /: 'datetime.datetime' and 'int'
+Traceback (most recent call last):
+  File "c:\Project_2\data_warehouse_project\python_etl\main.py", line 15, in <module>
+    print(f"etl_start_time: {etl_start_time/100000}")
+                             ~~~~~~~~~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for /: 'datetime.datetime' and 'int'
+2026-06-17 21:46:53,756 |ERROR | ETL failed! Error: unsupported operand type(s) for /: 'datetime.datetime' and 'int'
+Traceback (most recent call last):
+  File "c:\Project_2\data_warehouse_project\python_etl\main.py", line 15, in <module>
+    print(f"etl_start_time: {etl_start_time/100000}")
+                             ~~~~~~~~~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for /: 'datetime.datetime' and 'int'
+2026-06-17 21:47:05,091 |ERROR | ETL failed! Error: int() argument must be a string, a bytes-like object or a real number, not 'datetime.datetime'
+Traceback (most recent call last):
+  File "c:\Project_2\data_warehouse_project\python_etl\main.py", line 14, in <module>
+    etl_start_time = int(datetime.now())
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'datetime.datetime'
+2026-06-17 21:47:59,801 |INFO | ================================================================================
+2026-06-17 21:47:59,802 |INFO | ETL PROCESS STARTED
+2026-06-17 21:47:59,802 |INFO | ================================================================================
+2026-06-17 21:47:59,802 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:47:59,802 |INFO | Processing table: bronze.crm_cust_info
+2026-06-17 21:47:59,802 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\cust_info.csv
+2026-06-17 21:47:59,802 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:47:59,802 |INFO | [EXTRACT] Reading data from cust_info.csv ...
+2026-06-17 21:47:59,822 |INFO | [SUCCESS] Data extracted from cust_info.csv
+2026-06-17 21:47:59,823 |INFO | [INFO] Total rows extracted: 18494
+2026-06-17 21:47:59,823 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:47:59,830 |INFO | [PREVIEW] First 5 rows from cust_info.csv:
+    cst_id     cst_key cst_firstname cst_lastname cst_marital_status cst_gndr cst_create_date
+0  11000.0  AW00011000           Jon        Yang                   M        M      2025-10-06
+1  11001.0  AW00011001        Eugene      Huang                    S        M      2025-10-06
+2  11002.0  AW00011002         Ruben       Torres                  M        M      2025-10-06
+3  11003.0  AW00011003       Christy          Zhu                  S        F      2025-10-06
+4  11004.0  AW00011004     Elizabeth      Johnson                  S        F      2025-10-06
+2026-06-17 21:47:59,831 |INFO | [TRUNCATE] Truncating bronze.crm_cust_info ...
+2026-06-17 21:48:00,446 |INFO | [SUCCESS] bronze.crm_cust_info truncated successfully.
+2026-06-17 21:48:00,447 |INFO | [LOAD] Loading data into bronze.crm_cust_info ...
+2026-06-17 21:48:04,925 |INFO | [SUCCESS] Data loaded into bronze.crm_cust_info
+2026-06-17 21:48:04,925 |INFO | [VALIDATION] Checking row count in bronze.crm_cust_info ...
+2026-06-17 21:48:04,937 |INFO | [INFO] Row count after load for bronze.crm_cust_info: 18494
+2026-06-17 21:48:04,938 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:04,938 |INFO | Processing table: bronze.crm_prd_info
+2026-06-17 21:48:04,938 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\prd_info.csv
+2026-06-17 21:48:04,938 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:04,938 |INFO | [EXTRACT] Reading data from prd_info.csv ...
+2026-06-17 21:48:04,942 |INFO | [SUCCESS] Data extracted from prd_info.csv
+2026-06-17 21:48:04,942 |INFO | [INFO] Total rows extracted: 397
+2026-06-17 21:48:04,942 |INFO | [INFO] Total columns extracted: 7
+2026-06-17 21:48:04,943 |INFO | [PREVIEW] First 5 rows from prd_info.csv:
+   prd_id           prd_key                     prd_nm  prd_cost prd_line prd_start_dt  prd_end_dt
+0     210  CO-RF-FR-R92B-58  HL Road Frame - Black- 58       NaN       R    2003-07-01         NaN
+1     211  CO-RF-FR-R92R-58    HL Road Frame - Red- 58       NaN       R    2003-07-01         NaN
+2     212   AC-HE-HL-U509-R      Sport-100 Helmet- Red      12.0       S    2011-07-01  2007-12-28
+3     213   AC-HE-HL-U509-R      Sport-100 Helmet- Red      14.0       S    2012-07-01  2008-12-27
+4     214   AC-HE-HL-U509-R      Sport-100 Helmet- Red      13.0       S    2013-07-01         NaN
+2026-06-17 21:48:04,943 |INFO | [TRUNCATE] Truncating bronze.crm_prd_info ...
+2026-06-17 21:48:04,953 |INFO | [SUCCESS] bronze.crm_prd_info truncated successfully.
+2026-06-17 21:48:04,954 |INFO | [LOAD] Loading data into bronze.crm_prd_info ...
+2026-06-17 21:48:05,481 |INFO | [SUCCESS] Data loaded into bronze.crm_prd_info
+2026-06-17 21:48:05,481 |INFO | [VALIDATION] Checking row count in bronze.crm_prd_info ...
+2026-06-17 21:48:05,487 |INFO | [INFO] Row count after load for bronze.crm_prd_info: 397
+2026-06-17 21:48:05,488 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:05,489 |INFO | Processing table: bronze.crm_sales_details
+2026-06-17 21:48:05,489 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\sales_details.csv
+2026-06-17 21:48:05,489 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:05,489 |INFO | [EXTRACT] Reading data from sales_details.csv ...
+2026-06-17 21:48:05,549 |INFO | [SUCCESS] Data extracted from sales_details.csv
+2026-06-17 21:48:05,550 |INFO | [INFO] Total rows extracted: 60398
+2026-06-17 21:48:05,550 |INFO | [INFO] Total columns extracted: 9
+2026-06-17 21:48:05,551 |INFO | [PREVIEW] First 5 rows from sales_details.csv:
+  sls_ord_num sls_prd_key  sls_cust_id  sls_order_dt  sls_ship_dt  sls_due_dt  sls_sales  sls_quantity  sls_price
+0     SO43697  BK-R93R-62        21768      20101229     20110105    20110110     3578.0             1     3578.0
+1     SO43698  BK-M82S-44        28389      20101229     20110105    20110110     3400.0             1     3400.0
+2     SO43699  BK-M82S-44        25863      20101229     20110105    20110110     3400.0             1     3400.0
+3     SO43700  BK-R50B-62        14501      20101229     20110105    20110110      699.0             1      699.0
+4     SO43701  BK-M82S-44        11003      20101229     20110105    20110110     3400.0             1     3400.0
+2026-06-17 21:48:05,552 |INFO | [TRUNCATE] Truncating bronze.crm_sales_details ...
+2026-06-17 21:48:05,564 |INFO | [SUCCESS] bronze.crm_sales_details truncated successfully.
+2026-06-17 21:48:05,564 |INFO | [LOAD] Loading data into bronze.crm_sales_details ...
+2026-06-17 21:48:13,186 |INFO | [SUCCESS] Data loaded into bronze.crm_sales_details
+2026-06-17 21:48:13,187 |INFO | [VALIDATION] Checking row count in bronze.crm_sales_details ...
+2026-06-17 21:48:13,207 |INFO | [INFO] Row count after load for bronze.crm_sales_details: 60398
+2026-06-17 21:48:13,208 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:13,208 |INFO | Processing table: bronze.erp_cust_az12
+2026-06-17 21:48:13,208 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\CUST_AZ12.csv
+2026-06-17 21:48:13,208 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:13,208 |INFO | [EXTRACT] Reading data from cust_az12.csv ...
+2026-06-17 21:48:13,224 |INFO | [SUCCESS] Data extracted from cust_az12.csv
+2026-06-17 21:48:13,224 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:48:13,225 |INFO | [INFO] Total columns extracted: 3
+2026-06-17 21:48:13,226 |INFO | [PREVIEW] First 5 rows from cust_az12.csv:
+             CID       BDATE     GEN
+0  NASAW00011000  1971-10-06    Male
+1  NASAW00011001  1976-05-10    Male
+2  NASAW00011002  1971-02-09    Male
+3  NASAW00011003  1973-08-14  Female
+4  NASAW00011004  1979-08-05  Female
+2026-06-17 21:48:13,228 |INFO | [TRUNCATE] Truncating bronze.erp_cust_az12 ...
+2026-06-17 21:48:13,240 |INFO | [SUCCESS] bronze.erp_cust_az12 truncated successfully.
+2026-06-17 21:48:13,241 |INFO | [LOAD] Loading data into bronze.erp_cust_az12 ...
+2026-06-17 21:48:14,857 |INFO | [SUCCESS] Data loaded into bronze.erp_cust_az12
+2026-06-17 21:48:14,857 |INFO | [VALIDATION] Checking row count in bronze.erp_cust_az12 ...
+2026-06-17 21:48:14,868 |INFO | [INFO] Row count after load for bronze.erp_cust_az12: 18484
+2026-06-17 21:48:14,869 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:14,869 |INFO | Processing table: bronze.erp_loc_a101
+2026-06-17 21:48:14,869 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\LOC_A101.csv
+2026-06-17 21:48:14,869 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:14,869 |INFO | [EXTRACT] Reading data from loc_a101.csv ...
+2026-06-17 21:48:14,891 |INFO | [SUCCESS] Data extracted from loc_a101.csv
+2026-06-17 21:48:14,891 |INFO | [INFO] Total rows extracted: 18484
+2026-06-17 21:48:14,891 |INFO | [INFO] Total columns extracted: 2
+2026-06-17 21:48:14,892 |INFO | [PREVIEW] First 5 rows from loc_a101.csv:
+           CID      CNTRY
+0  AW-00011000  Australia
+1  AW-00011001  Australia
+2  AW-00011002  Australia
+3  AW-00011003  Australia
+4  AW-00011004  Australia
+2026-06-17 21:48:14,893 |INFO | [TRUNCATE] Truncating bronze.erp_loc_a101 ...
+2026-06-17 21:48:14,905 |INFO | [SUCCESS] bronze.erp_loc_a101 truncated successfully.
+2026-06-17 21:48:14,905 |INFO | [LOAD] Loading data into bronze.erp_loc_a101 ...
+2026-06-17 21:48:16,127 |INFO | [SUCCESS] Data loaded into bronze.erp_loc_a101
+2026-06-17 21:48:16,128 |INFO | [VALIDATION] Checking row count in bronze.erp_loc_a101 ...
+2026-06-17 21:48:16,142 |INFO | [INFO] Row count after load for bronze.erp_loc_a101: 18484
+2026-06-17 21:48:16,143 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:16,143 |INFO | Processing table: bronze.erp_px_cat_g1v2
+2026-06-17 21:48:16,143 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\PX_CAT_G1V2.csv
+2026-06-17 21:48:16,143 |INFO | --------------------------------------------------------------------------------
+2026-06-17 21:48:16,144 |INFO | [EXTRACT] Reading data from px_cat_g1v2.csv ...
+2026-06-17 21:48:16,146 |INFO | [SUCCESS] Data extracted from px_cat_g1v2.csv
+2026-06-17 21:48:16,146 |INFO | [INFO] Total rows extracted: 37
+2026-06-17 21:48:16,146 |INFO | [INFO] Total columns extracted: 4
+2026-06-17 21:48:16,148 |INFO | [PREVIEW] First 5 rows from px_cat_g1v2.csv:
+      ID          CAT             SUBCAT MAINTENANCE
+0  AC_BR  Accessories         Bike Racks         Yes
+1  AC_BS  Accessories        Bike Stands          No
+2  AC_BC  Accessories  Bottles and Cages          No
+3  AC_CL  Accessories           Cleaners         Yes
+4  AC_FE  Accessories            Fenders          No
+2026-06-17 21:48:16,149 |INFO | [TRUNCATE] Truncating bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:48:16,164 |INFO | [SUCCESS] bronze.erp_px_cat_g1v2 truncated successfully.
+2026-06-17 21:48:16,165 |INFO | [LOAD] Loading data into bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:48:16,188 |INFO | [SUCCESS] Data loaded into bronze.erp_px_cat_g1v2
+2026-06-17 21:48:16,189 |INFO | [VALIDATION] Checking row count in bronze.erp_px_cat_g1v2 ...
+2026-06-17 21:48:16,195 |INFO | [INFO] Row count after load for bronze.erp_px_cat_g1v2: 37
+2026-06-17 21:48:16,198 |INFO | ================================================================================
+2026-06-17 21:48:16,198 |INFO | STARTING PROCEDURE EXECUTION: silver.load_silver
+2026-06-17 21:48:16,198 |INFO | ================================================================================
+2026-06-17 21:48:16,198 |INFO | [EXECUTING] EXEC silver.load_silver
+2026-06-17 21:48:17,771 |INFO | [SUCCESS] Procedure 'silver.load_silver' executed successfully.
+2026-06-17 21:48:17,772 |INFO | ==================================================
+2026-06-17 21:48:17,772 |INFO | Validating Gold Layer
+2026-06-17 21:48:17,772 |INFO | ==================================================
+2026-06-17 21:48:17,996 |INFO | gold.dim_customers rows: 18484
+2026-06-17 21:48:18,030 |INFO | gold.dim_products rows: 295
+2026-06-17 21:48:18,720 |INFO | gold.fact_sales rows: 60398
+2026-06-17 21:48:18,721 |ERROR | ETL failed! Error: unsupported format string passed to datetime.timedelta.__format__
+Traceback (most recent call last):
+  File "c:\Project_2\data_warehouse_project\python_etl\main.py", line 168, in <module>
+    print(f"etl_duration: {etl_duration:.1f}")
+                          ^^^^^^^^^^^^^^^^^^
+TypeError: unsupported format string passed to datetime.timedelta.__format__
+2026-06-18 09:38:47,246 |INFO | ================================================================================
+2026-06-18 09:38:47,246 |INFO | ETL PROCESS STARTED
+2026-06-18 09:38:47,246 |INFO | ================================================================================
+2026-06-18 09:38:47,247 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:38:47,247 |INFO | Processing table: bronze.crm_cust_info
+2026-06-18 09:38:47,247 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\cust_info.csv
+2026-06-18 09:38:47,247 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:38:47,248 |INFO | [EXTRACT] Reading data from cust_info.csv ...
+2026-06-18 09:38:47,292 |INFO | [SUCCESS] Data extracted from cust_info.csv
+2026-06-18 09:38:47,292 |INFO | [INFO] Total rows extracted: 18494
+2026-06-18 09:38:47,292 |INFO | [INFO] Total columns extracted: 7
+2026-06-18 09:38:47,301 |INFO | [PREVIEW] First 5 rows from cust_info.csv:
+    cst_id     cst_key cst_firstname cst_lastname cst_marital_status cst_gndr cst_create_date
+0  11000.0  AW00011000           Jon        Yang                   M        M      2025-10-06
+1  11001.0  AW00011001        Eugene      Huang                    S        M      2025-10-06
+2  11002.0  AW00011002         Ruben       Torres                  M        M      2025-10-06
+3  11003.0  AW00011003       Christy          Zhu                  S        F      2025-10-06
+4  11004.0  AW00011004     Elizabeth      Johnson                  S        F      2025-10-06
+2026-06-18 09:38:47,301 |INFO | [TRUNCATE] Truncating bronze.crm_cust_info ...
+2026-06-18 09:38:48,489 |INFO | [SUCCESS] bronze.crm_cust_info truncated successfully.
+2026-06-18 09:38:48,490 |INFO | [LOAD] Loading data into bronze.crm_cust_info ...
+2026-06-18 09:38:52,771 |INFO | [SUCCESS] Data loaded into bronze.crm_cust_info
+2026-06-18 09:38:52,771 |INFO | [VALIDATION] Checking row count in bronze.crm_cust_info ...
+2026-06-18 09:38:52,785 |INFO | [INFO] Row count after load for bronze.crm_cust_info: 18494
+2026-06-18 09:38:52,786 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:38:52,786 |INFO | Processing table: bronze.crm_prd_info
+2026-06-18 09:38:52,786 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\prd_info.csv
+2026-06-18 09:38:52,786 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:38:52,787 |INFO | [EXTRACT] Reading data from prd_info.csv ...
+2026-06-18 09:38:52,807 |INFO | [SUCCESS] Data extracted from prd_info.csv
+2026-06-18 09:38:52,808 |INFO | [INFO] Total rows extracted: 397
+2026-06-18 09:38:52,808 |INFO | [INFO] Total columns extracted: 7
+2026-06-18 09:38:52,810 |INFO | [PREVIEW] First 5 rows from prd_info.csv:
+   prd_id           prd_key                     prd_nm  prd_cost prd_line prd_start_dt  prd_end_dt
+0     210  CO-RF-FR-R92B-58  HL Road Frame - Black- 58       NaN       R    2003-07-01         NaN
+1     211  CO-RF-FR-R92R-58    HL Road Frame - Red- 58       NaN       R    2003-07-01         NaN
+2     212   AC-HE-HL-U509-R      Sport-100 Helmet- Red      12.0       S    2011-07-01  2007-12-28
+3     213   AC-HE-HL-U509-R      Sport-100 Helmet- Red      14.0       S    2012-07-01  2008-12-27
+4     214   AC-HE-HL-U509-R      Sport-100 Helmet- Red      13.0       S    2013-07-01         NaN
+2026-06-18 09:38:52,811 |INFO | [TRUNCATE] Truncating bronze.crm_prd_info ...
+2026-06-18 09:38:52,835 |INFO | [SUCCESS] bronze.crm_prd_info truncated successfully.
+2026-06-18 09:38:52,836 |INFO | [LOAD] Loading data into bronze.crm_prd_info ...
+2026-06-18 09:38:53,350 |INFO | [SUCCESS] Data loaded into bronze.crm_prd_info
+2026-06-18 09:38:53,350 |INFO | [VALIDATION] Checking row count in bronze.crm_prd_info ...
+2026-06-18 09:38:53,357 |INFO | [INFO] Row count after load for bronze.crm_prd_info: 397
+2026-06-18 09:38:53,358 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:38:53,358 |INFO | Processing table: bronze.crm_sales_details
+2026-06-18 09:38:53,359 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\sales_details.csv
+2026-06-18 09:38:53,359 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:38:53,359 |INFO | [EXTRACT] Reading data from sales_details.csv ...
+2026-06-18 09:38:53,458 |INFO | [SUCCESS] Data extracted from sales_details.csv
+2026-06-18 09:38:53,458 |INFO | [INFO] Total rows extracted: 60398
+2026-06-18 09:38:53,458 |INFO | [INFO] Total columns extracted: 9
+2026-06-18 09:38:53,462 |INFO | [PREVIEW] First 5 rows from sales_details.csv:
+  sls_ord_num sls_prd_key  sls_cust_id  sls_order_dt  sls_ship_dt  sls_due_dt  sls_sales  sls_quantity  sls_price
+0     SO43697  BK-R93R-62        21768      20101229     20110105    20110110     3578.0             1     3578.0
+1     SO43698  BK-M82S-44        28389      20101229     20110105    20110110     3400.0             1     3400.0
+2     SO43699  BK-M82S-44        25863      20101229     20110105    20110110     3400.0             1     3400.0
+3     SO43700  BK-R50B-62        14501      20101229     20110105    20110110      699.0             1      699.0
+4     SO43701  BK-M82S-44        11003      20101229     20110105    20110110     3400.0             1     3400.0
+2026-06-18 09:38:53,463 |INFO | [TRUNCATE] Truncating bronze.crm_sales_details ...
+2026-06-18 09:38:53,475 |INFO | [SUCCESS] bronze.crm_sales_details truncated successfully.
+2026-06-18 09:38:53,475 |INFO | [LOAD] Loading data into bronze.crm_sales_details ...
+2026-06-18 09:39:00,868 |INFO | [SUCCESS] Data loaded into bronze.crm_sales_details
+2026-06-18 09:39:00,868 |INFO | [VALIDATION] Checking row count in bronze.crm_sales_details ...
+2026-06-18 09:39:00,889 |INFO | [INFO] Row count after load for bronze.crm_sales_details: 60398
+2026-06-18 09:39:00,890 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:39:00,891 |INFO | Processing table: bronze.erp_cust_az12
+2026-06-18 09:39:00,891 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\CUST_AZ12.csv
+2026-06-18 09:39:00,891 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:39:00,891 |INFO | [EXTRACT] Reading data from cust_az12.csv ...
+2026-06-18 09:39:00,927 |INFO | [SUCCESS] Data extracted from cust_az12.csv
+2026-06-18 09:39:00,928 |INFO | [INFO] Total rows extracted: 18484
+2026-06-18 09:39:00,928 |INFO | [INFO] Total columns extracted: 3
+2026-06-18 09:39:00,929 |INFO | [PREVIEW] First 5 rows from cust_az12.csv:
+             CID       BDATE     GEN
+0  NASAW00011000  1971-10-06    Male
+1  NASAW00011001  1976-05-10    Male
+2  NASAW00011002  1971-02-09    Male
+3  NASAW00011003  1973-08-14  Female
+4  NASAW00011004  1979-08-05  Female
+2026-06-18 09:39:00,929 |INFO | [TRUNCATE] Truncating bronze.erp_cust_az12 ...
+2026-06-18 09:39:00,949 |INFO | [SUCCESS] bronze.erp_cust_az12 truncated successfully.
+2026-06-18 09:39:00,950 |INFO | [LOAD] Loading data into bronze.erp_cust_az12 ...
+2026-06-18 09:39:02,532 |INFO | [SUCCESS] Data loaded into bronze.erp_cust_az12
+2026-06-18 09:39:02,533 |INFO | [VALIDATION] Checking row count in bronze.erp_cust_az12 ...
+2026-06-18 09:39:02,543 |INFO | [INFO] Row count after load for bronze.erp_cust_az12: 18484
+2026-06-18 09:39:02,544 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:39:02,544 |INFO | Processing table: bronze.erp_loc_a101
+2026-06-18 09:39:02,544 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\LOC_A101.csv
+2026-06-18 09:39:02,544 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:39:02,545 |INFO | [EXTRACT] Reading data from loc_a101.csv ...
+2026-06-18 09:39:02,589 |INFO | [SUCCESS] Data extracted from loc_a101.csv
+2026-06-18 09:39:02,590 |INFO | [INFO] Total rows extracted: 18484
+2026-06-18 09:39:02,590 |INFO | [INFO] Total columns extracted: 2
+2026-06-18 09:39:02,591 |INFO | [PREVIEW] First 5 rows from loc_a101.csv:
+           CID      CNTRY
+0  AW-00011000  Australia
+1  AW-00011001  Australia
+2  AW-00011002  Australia
+3  AW-00011003  Australia
+4  AW-00011004  Australia
+2026-06-18 09:39:02,591 |INFO | [TRUNCATE] Truncating bronze.erp_loc_a101 ...
+2026-06-18 09:39:02,603 |INFO | [SUCCESS] bronze.erp_loc_a101 truncated successfully.
+2026-06-18 09:39:02,604 |INFO | [LOAD] Loading data into bronze.erp_loc_a101 ...
+2026-06-18 09:39:03,784 |INFO | [SUCCESS] Data loaded into bronze.erp_loc_a101
+2026-06-18 09:39:03,785 |INFO | [VALIDATION] Checking row count in bronze.erp_loc_a101 ...
+2026-06-18 09:39:03,799 |INFO | [INFO] Row count after load for bronze.erp_loc_a101: 18484
+2026-06-18 09:39:03,800 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:39:03,801 |INFO | Processing table: bronze.erp_px_cat_g1v2
+2026-06-18 09:39:03,801 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\PX_CAT_G1V2.csv
+2026-06-18 09:39:03,801 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:39:03,801 |INFO | [EXTRACT] Reading data from px_cat_g1v2.csv ...
+2026-06-18 09:39:03,822 |INFO | [SUCCESS] Data extracted from px_cat_g1v2.csv
+2026-06-18 09:39:03,823 |INFO | [INFO] Total rows extracted: 37
+2026-06-18 09:39:03,823 |INFO | [INFO] Total columns extracted: 4
+2026-06-18 09:39:03,824 |INFO | [PREVIEW] First 5 rows from px_cat_g1v2.csv:
+      ID          CAT             SUBCAT MAINTENANCE
+0  AC_BR  Accessories         Bike Racks         Yes
+1  AC_BS  Accessories        Bike Stands          No
+2  AC_BC  Accessories  Bottles and Cages          No
+3  AC_CL  Accessories           Cleaners         Yes
+4  AC_FE  Accessories            Fenders          No
+2026-06-18 09:39:03,825 |INFO | [TRUNCATE] Truncating bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:39:03,838 |INFO | [SUCCESS] bronze.erp_px_cat_g1v2 truncated successfully.
+2026-06-18 09:39:03,839 |INFO | [LOAD] Loading data into bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:39:03,855 |INFO | [SUCCESS] Data loaded into bronze.erp_px_cat_g1v2
+2026-06-18 09:39:03,855 |INFO | [VALIDATION] Checking row count in bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:39:03,868 |INFO | [INFO] Row count after load for bronze.erp_px_cat_g1v2: 37
+2026-06-18 09:39:03,870 |INFO | ================================================================================
+2026-06-18 09:39:03,870 |INFO | STARTING PROCEDURE EXECUTION: silver.load_silver
+2026-06-18 09:39:03,870 |INFO | ================================================================================
+2026-06-18 09:39:03,871 |INFO | [EXECUTING] EXEC silver.load_silver
+2026-06-18 09:39:05,593 |INFO | [SUCCESS] Procedure 'silver.load_silver' executed successfully.
+2026-06-18 09:39:05,594 |INFO | ==================================================
+2026-06-18 09:39:05,595 |INFO | Validating Gold Layer
+2026-06-18 09:39:05,595 |INFO | ==================================================
+2026-06-18 09:39:05,824 |INFO | gold.dim_customers rows: 18484
+2026-06-18 09:39:05,860 |INFO | gold.dim_products rows: 295
+2026-06-18 09:39:06,473 |INFO | gold.fact_sales rows: 60398
+2026-06-18 09:39:06,475 |ERROR | ETL failed! Error: unsupported format string passed to datetime.timedelta.__format__
+Traceback (most recent call last):
+  File "c:\Project_2\data_warehouse_project\python_etl\main.py", line 168, in <module>
+    print(f"etl_duration: {etl_duration:.1f}")
+                          ^^^^^^^^^^^^^^^^^^
+TypeError: unsupported format string passed to datetime.timedelta.__format__
+2026-06-18 09:40:41,857 |INFO | ================================================================================
+2026-06-18 09:40:41,858 |INFO | ETL PROCESS STARTED
+2026-06-18 09:40:41,858 |INFO | ================================================================================
+2026-06-18 09:40:41,858 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:41,858 |INFO | Processing table: bronze.crm_cust_info
+2026-06-18 09:40:41,858 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\cust_info.csv
+2026-06-18 09:40:41,858 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:41,858 |INFO | [EXTRACT] Reading data from cust_info.csv ...
+2026-06-18 09:40:41,889 |INFO | [SUCCESS] Data extracted from cust_info.csv
+2026-06-18 09:40:41,889 |INFO | [INFO] Total rows extracted: 18494
+2026-06-18 09:40:41,889 |INFO | [INFO] Total columns extracted: 7
+2026-06-18 09:40:41,901 |INFO | [PREVIEW] First 5 rows from cust_info.csv:
+    cst_id     cst_key cst_firstname cst_lastname cst_marital_status cst_gndr cst_create_date
+0  11000.0  AW00011000           Jon        Yang                   M        M      2025-10-06
+1  11001.0  AW00011001        Eugene      Huang                    S        M      2025-10-06
+2  11002.0  AW00011002         Ruben       Torres                  M        M      2025-10-06
+3  11003.0  AW00011003       Christy          Zhu                  S        F      2025-10-06
+4  11004.0  AW00011004     Elizabeth      Johnson                  S        F      2025-10-06
+2026-06-18 09:40:41,902 |INFO | [TRUNCATE] Truncating bronze.crm_cust_info ...
+2026-06-18 09:40:42,511 |INFO | [SUCCESS] bronze.crm_cust_info truncated successfully.
+2026-06-18 09:40:42,512 |INFO | [LOAD] Loading data into bronze.crm_cust_info ...
+2026-06-18 09:40:46,501 |INFO | [SUCCESS] Data loaded into bronze.crm_cust_info
+2026-06-18 09:40:46,502 |INFO | [VALIDATION] Checking row count in bronze.crm_cust_info ...
+2026-06-18 09:40:46,513 |INFO | [INFO] Row count after load for bronze.crm_cust_info: 18494
+2026-06-18 09:40:46,515 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:46,515 |INFO | Processing table: bronze.crm_prd_info
+2026-06-18 09:40:46,515 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\prd_info.csv
+2026-06-18 09:40:46,515 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:46,515 |INFO | [EXTRACT] Reading data from prd_info.csv ...
+2026-06-18 09:40:46,522 |INFO | [SUCCESS] Data extracted from prd_info.csv
+2026-06-18 09:40:46,522 |INFO | [INFO] Total rows extracted: 397
+2026-06-18 09:40:46,522 |INFO | [INFO] Total columns extracted: 7
+2026-06-18 09:40:46,526 |INFO | [PREVIEW] First 5 rows from prd_info.csv:
+   prd_id           prd_key                     prd_nm  prd_cost prd_line prd_start_dt  prd_end_dt
+0     210  CO-RF-FR-R92B-58  HL Road Frame - Black- 58       NaN       R    2003-07-01         NaN
+1     211  CO-RF-FR-R92R-58    HL Road Frame - Red- 58       NaN       R    2003-07-01         NaN
+2     212   AC-HE-HL-U509-R      Sport-100 Helmet- Red      12.0       S    2011-07-01  2007-12-28
+3     213   AC-HE-HL-U509-R      Sport-100 Helmet- Red      14.0       S    2012-07-01  2008-12-27
+4     214   AC-HE-HL-U509-R      Sport-100 Helmet- Red      13.0       S    2013-07-01         NaN
+2026-06-18 09:40:46,526 |INFO | [TRUNCATE] Truncating bronze.crm_prd_info ...
+2026-06-18 09:40:46,538 |INFO | [SUCCESS] bronze.crm_prd_info truncated successfully.
+2026-06-18 09:40:46,539 |INFO | [LOAD] Loading data into bronze.crm_prd_info ...
+2026-06-18 09:40:47,119 |INFO | [SUCCESS] Data loaded into bronze.crm_prd_info
+2026-06-18 09:40:47,120 |INFO | [VALIDATION] Checking row count in bronze.crm_prd_info ...
+2026-06-18 09:40:47,139 |INFO | [INFO] Row count after load for bronze.crm_prd_info: 397
+2026-06-18 09:40:47,140 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:47,141 |INFO | Processing table: bronze.crm_sales_details
+2026-06-18 09:40:47,141 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\sales_details.csv
+2026-06-18 09:40:47,141 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:47,143 |INFO | [EXTRACT] Reading data from sales_details.csv ...
+2026-06-18 09:40:47,214 |INFO | [SUCCESS] Data extracted from sales_details.csv
+2026-06-18 09:40:47,214 |INFO | [INFO] Total rows extracted: 60398
+2026-06-18 09:40:47,214 |INFO | [INFO] Total columns extracted: 9
+2026-06-18 09:40:47,216 |INFO | [PREVIEW] First 5 rows from sales_details.csv:
+  sls_ord_num sls_prd_key  sls_cust_id  sls_order_dt  sls_ship_dt  sls_due_dt  sls_sales  sls_quantity  sls_price
+0     SO43697  BK-R93R-62        21768      20101229     20110105    20110110     3578.0             1     3578.0
+1     SO43698  BK-M82S-44        28389      20101229     20110105    20110110     3400.0             1     3400.0
+2     SO43699  BK-M82S-44        25863      20101229     20110105    20110110     3400.0             1     3400.0
+3     SO43700  BK-R50B-62        14501      20101229     20110105    20110110      699.0             1      699.0
+4     SO43701  BK-M82S-44        11003      20101229     20110105    20110110     3400.0             1     3400.0
+2026-06-18 09:40:47,216 |INFO | [TRUNCATE] Truncating bronze.crm_sales_details ...
+2026-06-18 09:40:47,230 |INFO | [SUCCESS] bronze.crm_sales_details truncated successfully.
+2026-06-18 09:40:47,231 |INFO | [LOAD] Loading data into bronze.crm_sales_details ...
+2026-06-18 09:40:54,749 |INFO | [SUCCESS] Data loaded into bronze.crm_sales_details
+2026-06-18 09:40:54,750 |INFO | [VALIDATION] Checking row count in bronze.crm_sales_details ...
+2026-06-18 09:40:54,772 |INFO | [INFO] Row count after load for bronze.crm_sales_details: 60398
+2026-06-18 09:40:54,773 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:54,774 |INFO | Processing table: bronze.erp_cust_az12
+2026-06-18 09:40:54,774 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\CUST_AZ12.csv
+2026-06-18 09:40:54,774 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:54,774 |INFO | [EXTRACT] Reading data from cust_az12.csv ...
+2026-06-18 09:40:54,802 |INFO | [SUCCESS] Data extracted from cust_az12.csv
+2026-06-18 09:40:54,803 |INFO | [INFO] Total rows extracted: 18484
+2026-06-18 09:40:54,803 |INFO | [INFO] Total columns extracted: 3
+2026-06-18 09:40:54,806 |INFO | [PREVIEW] First 5 rows from cust_az12.csv:
+             CID       BDATE     GEN
+0  NASAW00011000  1971-10-06    Male
+1  NASAW00011001  1976-05-10    Male
+2  NASAW00011002  1971-02-09    Male
+3  NASAW00011003  1973-08-14  Female
+4  NASAW00011004  1979-08-05  Female
+2026-06-18 09:40:54,807 |INFO | [TRUNCATE] Truncating bronze.erp_cust_az12 ...
+2026-06-18 09:40:54,821 |INFO | [SUCCESS] bronze.erp_cust_az12 truncated successfully.
+2026-06-18 09:40:54,822 |INFO | [LOAD] Loading data into bronze.erp_cust_az12 ...
+2026-06-18 09:40:56,540 |INFO | [SUCCESS] Data loaded into bronze.erp_cust_az12
+2026-06-18 09:40:56,541 |INFO | [VALIDATION] Checking row count in bronze.erp_cust_az12 ...
+2026-06-18 09:40:56,553 |INFO | [INFO] Row count after load for bronze.erp_cust_az12: 18484
+2026-06-18 09:40:56,554 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:56,554 |INFO | Processing table: bronze.erp_loc_a101
+2026-06-18 09:40:56,554 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\LOC_A101.csv
+2026-06-18 09:40:56,554 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:56,555 |INFO | [EXTRACT] Reading data from loc_a101.csv ...
+2026-06-18 09:40:56,579 |INFO | [SUCCESS] Data extracted from loc_a101.csv
+2026-06-18 09:40:56,580 |INFO | [INFO] Total rows extracted: 18484
+2026-06-18 09:40:56,580 |INFO | [INFO] Total columns extracted: 2
+2026-06-18 09:40:56,581 |INFO | [PREVIEW] First 5 rows from loc_a101.csv:
+           CID      CNTRY
+0  AW-00011000  Australia
+1  AW-00011001  Australia
+2  AW-00011002  Australia
+3  AW-00011003  Australia
+4  AW-00011004  Australia
+2026-06-18 09:40:56,582 |INFO | [TRUNCATE] Truncating bronze.erp_loc_a101 ...
+2026-06-18 09:40:56,594 |INFO | [SUCCESS] bronze.erp_loc_a101 truncated successfully.
+2026-06-18 09:40:56,595 |INFO | [LOAD] Loading data into bronze.erp_loc_a101 ...
+2026-06-18 09:40:57,696 |INFO | [SUCCESS] Data loaded into bronze.erp_loc_a101
+2026-06-18 09:40:57,696 |INFO | [VALIDATION] Checking row count in bronze.erp_loc_a101 ...
+2026-06-18 09:40:57,709 |INFO | [INFO] Row count after load for bronze.erp_loc_a101: 18484
+2026-06-18 09:40:57,710 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:57,710 |INFO | Processing table: bronze.erp_px_cat_g1v2
+2026-06-18 09:40:57,710 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\PX_CAT_G1V2.csv
+2026-06-18 09:40:57,710 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:40:57,710 |INFO | [EXTRACT] Reading data from px_cat_g1v2.csv ...
+2026-06-18 09:40:57,713 |INFO | [SUCCESS] Data extracted from px_cat_g1v2.csv
+2026-06-18 09:40:57,714 |INFO | [INFO] Total rows extracted: 37
+2026-06-18 09:40:57,714 |INFO | [INFO] Total columns extracted: 4
+2026-06-18 09:40:57,717 |INFO | [PREVIEW] First 5 rows from px_cat_g1v2.csv:
+      ID          CAT             SUBCAT MAINTENANCE
+0  AC_BR  Accessories         Bike Racks         Yes
+1  AC_BS  Accessories        Bike Stands          No
+2  AC_BC  Accessories  Bottles and Cages          No
+3  AC_CL  Accessories           Cleaners         Yes
+4  AC_FE  Accessories            Fenders          No
+2026-06-18 09:40:57,718 |INFO | [TRUNCATE] Truncating bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:40:57,731 |INFO | [SUCCESS] bronze.erp_px_cat_g1v2 truncated successfully.
+2026-06-18 09:40:57,731 |INFO | [LOAD] Loading data into bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:40:57,759 |INFO | [SUCCESS] Data loaded into bronze.erp_px_cat_g1v2
+2026-06-18 09:40:57,760 |INFO | [VALIDATION] Checking row count in bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:40:57,767 |INFO | [INFO] Row count after load for bronze.erp_px_cat_g1v2: 37
+2026-06-18 09:40:57,769 |INFO | ================================================================================
+2026-06-18 09:40:57,769 |INFO | STARTING PROCEDURE EXECUTION: silver.load_silver
+2026-06-18 09:40:57,769 |INFO | ================================================================================
+2026-06-18 09:40:57,769 |INFO | [EXECUTING] EXEC silver.load_silver
+2026-06-18 09:40:59,345 |INFO | [SUCCESS] Procedure 'silver.load_silver' executed successfully.
+2026-06-18 09:40:59,347 |INFO | ==================================================
+2026-06-18 09:40:59,347 |INFO | Validating Gold Layer
+2026-06-18 09:40:59,348 |INFO | ==================================================
+2026-06-18 09:40:59,576 |INFO | gold.dim_customers rows: 18484
+2026-06-18 09:40:59,604 |INFO | gold.dim_products rows: 295
+2026-06-18 09:41:00,277 |INFO | gold.fact_sales rows: 60398
+2026-06-18 09:41:00,279 |INFO | ================================================================================
+2026-06-18 09:41:00,280 |INFO | ETL PROCESS COMPLETED SUCCESSFULLY
+2026-06-18 09:41:00,280 |INFO | ================================================================================
+2026-06-18 09:41:55,578 |INFO | ================================================================================
+2026-06-18 09:41:55,578 |INFO | ETL PROCESS STARTED
+2026-06-18 09:41:55,578 |INFO | ================================================================================
+2026-06-18 09:41:55,578 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:41:55,579 |INFO | Processing table: bronze.crm_cust_info
+2026-06-18 09:41:55,579 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\cust_info.csv
+2026-06-18 09:41:55,579 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:41:55,579 |INFO | [EXTRACT] Reading data from cust_info.csv ...
+2026-06-18 09:41:55,615 |INFO | [SUCCESS] Data extracted from cust_info.csv
+2026-06-18 09:41:55,616 |INFO | [INFO] Total rows extracted: 18494
+2026-06-18 09:41:55,616 |INFO | [INFO] Total columns extracted: 7
+2026-06-18 09:41:55,626 |INFO | [PREVIEW] First 5 rows from cust_info.csv:
+    cst_id     cst_key cst_firstname cst_lastname cst_marital_status cst_gndr cst_create_date
+0  11000.0  AW00011000           Jon        Yang                   M        M      2025-10-06
+1  11001.0  AW00011001        Eugene      Huang                    S        M      2025-10-06
+2  11002.0  AW00011002         Ruben       Torres                  M        M      2025-10-06
+3  11003.0  AW00011003       Christy          Zhu                  S        F      2025-10-06
+4  11004.0  AW00011004     Elizabeth      Johnson                  S        F      2025-10-06
+2026-06-18 09:41:55,627 |INFO | [TRUNCATE] Truncating bronze.crm_cust_info ...
+2026-06-18 09:41:56,422 |INFO | [SUCCESS] bronze.crm_cust_info truncated successfully.
+2026-06-18 09:41:56,422 |INFO | [LOAD] Loading data into bronze.crm_cust_info ...
+2026-06-18 09:42:00,855 |INFO | [SUCCESS] Data loaded into bronze.crm_cust_info
+2026-06-18 09:42:00,856 |INFO | [VALIDATION] Checking row count in bronze.crm_cust_info ...
+2026-06-18 09:42:00,869 |INFO | [INFO] Row count after load for bronze.crm_cust_info: 18494
+2026-06-18 09:42:00,870 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:00,870 |INFO | Processing table: bronze.crm_prd_info
+2026-06-18 09:42:00,871 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\prd_info.csv
+2026-06-18 09:42:00,871 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:00,871 |INFO | [EXTRACT] Reading data from prd_info.csv ...
+2026-06-18 09:42:00,878 |INFO | [SUCCESS] Data extracted from prd_info.csv
+2026-06-18 09:42:00,879 |INFO | [INFO] Total rows extracted: 397
+2026-06-18 09:42:00,879 |INFO | [INFO] Total columns extracted: 7
+2026-06-18 09:42:00,881 |INFO | [PREVIEW] First 5 rows from prd_info.csv:
+   prd_id           prd_key                     prd_nm  prd_cost prd_line prd_start_dt  prd_end_dt
+0     210  CO-RF-FR-R92B-58  HL Road Frame - Black- 58       NaN       R    2003-07-01         NaN
+1     211  CO-RF-FR-R92R-58    HL Road Frame - Red- 58       NaN       R    2003-07-01         NaN
+2     212   AC-HE-HL-U509-R      Sport-100 Helmet- Red      12.0       S    2011-07-01  2007-12-28
+3     213   AC-HE-HL-U509-R      Sport-100 Helmet- Red      14.0       S    2012-07-01  2008-12-27
+4     214   AC-HE-HL-U509-R      Sport-100 Helmet- Red      13.0       S    2013-07-01         NaN
+2026-06-18 09:42:00,881 |INFO | [TRUNCATE] Truncating bronze.crm_prd_info ...
+2026-06-18 09:42:00,895 |INFO | [SUCCESS] bronze.crm_prd_info truncated successfully.
+2026-06-18 09:42:00,896 |INFO | [LOAD] Loading data into bronze.crm_prd_info ...
+2026-06-18 09:42:01,510 |INFO | [SUCCESS] Data loaded into bronze.crm_prd_info
+2026-06-18 09:42:01,511 |INFO | [VALIDATION] Checking row count in bronze.crm_prd_info ...
+2026-06-18 09:42:01,523 |INFO | [INFO] Row count after load for bronze.crm_prd_info: 397
+2026-06-18 09:42:01,523 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:01,523 |INFO | Processing table: bronze.crm_sales_details
+2026-06-18 09:42:01,524 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\sales_details.csv
+2026-06-18 09:42:01,524 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:01,524 |INFO | [EXTRACT] Reading data from sales_details.csv ...
+2026-06-18 09:42:01,594 |INFO | [SUCCESS] Data extracted from sales_details.csv
+2026-06-18 09:42:01,594 |INFO | [INFO] Total rows extracted: 60398
+2026-06-18 09:42:01,594 |INFO | [INFO] Total columns extracted: 9
+2026-06-18 09:42:01,596 |INFO | [PREVIEW] First 5 rows from sales_details.csv:
+  sls_ord_num sls_prd_key  sls_cust_id  sls_order_dt  sls_ship_dt  sls_due_dt  sls_sales  sls_quantity  sls_price
+0     SO43697  BK-R93R-62        21768      20101229     20110105    20110110     3578.0             1     3578.0
+1     SO43698  BK-M82S-44        28389      20101229     20110105    20110110     3400.0             1     3400.0
+2     SO43699  BK-M82S-44        25863      20101229     20110105    20110110     3400.0             1     3400.0
+3     SO43700  BK-R50B-62        14501      20101229     20110105    20110110      699.0             1      699.0
+4     SO43701  BK-M82S-44        11003      20101229     20110105    20110110     3400.0             1     3400.0
+2026-06-18 09:42:01,596 |INFO | [TRUNCATE] Truncating bronze.crm_sales_details ...
+2026-06-18 09:42:01,609 |INFO | [SUCCESS] bronze.crm_sales_details truncated successfully.
+2026-06-18 09:42:01,609 |INFO | [LOAD] Loading data into bronze.crm_sales_details ...
+2026-06-18 09:42:08,969 |INFO | [SUCCESS] Data loaded into bronze.crm_sales_details
+2026-06-18 09:42:08,969 |INFO | [VALIDATION] Checking row count in bronze.crm_sales_details ...
+2026-06-18 09:42:08,993 |INFO | [INFO] Row count after load for bronze.crm_sales_details: 60398
+2026-06-18 09:42:08,994 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:08,995 |INFO | Processing table: bronze.erp_cust_az12
+2026-06-18 09:42:08,995 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\CUST_AZ12.csv
+2026-06-18 09:42:08,995 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:08,995 |INFO | [EXTRACT] Reading data from cust_az12.csv ...
+2026-06-18 09:42:09,011 |INFO | [SUCCESS] Data extracted from cust_az12.csv
+2026-06-18 09:42:09,012 |INFO | [INFO] Total rows extracted: 18484
+2026-06-18 09:42:09,012 |INFO | [INFO] Total columns extracted: 3
+2026-06-18 09:42:09,013 |INFO | [PREVIEW] First 5 rows from cust_az12.csv:
+             CID       BDATE     GEN
+0  NASAW00011000  1971-10-06    Male
+1  NASAW00011001  1976-05-10    Male
+2  NASAW00011002  1971-02-09    Male
+3  NASAW00011003  1973-08-14  Female
+4  NASAW00011004  1979-08-05  Female
+2026-06-18 09:42:09,013 |INFO | [TRUNCATE] Truncating bronze.erp_cust_az12 ...
+2026-06-18 09:42:09,025 |INFO | [SUCCESS] bronze.erp_cust_az12 truncated successfully.
+2026-06-18 09:42:09,026 |INFO | [LOAD] Loading data into bronze.erp_cust_az12 ...
+2026-06-18 09:42:10,647 |INFO | [SUCCESS] Data loaded into bronze.erp_cust_az12
+2026-06-18 09:42:10,648 |INFO | [VALIDATION] Checking row count in bronze.erp_cust_az12 ...
+2026-06-18 09:42:10,659 |INFO | [INFO] Row count after load for bronze.erp_cust_az12: 18484
+2026-06-18 09:42:10,661 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:10,661 |INFO | Processing table: bronze.erp_loc_a101
+2026-06-18 09:42:10,661 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\LOC_A101.csv
+2026-06-18 09:42:10,661 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:10,662 |INFO | [EXTRACT] Reading data from loc_a101.csv ...
+2026-06-18 09:42:10,676 |INFO | [SUCCESS] Data extracted from loc_a101.csv
+2026-06-18 09:42:10,677 |INFO | [INFO] Total rows extracted: 18484
+2026-06-18 09:42:10,677 |INFO | [INFO] Total columns extracted: 2
+2026-06-18 09:42:10,678 |INFO | [PREVIEW] First 5 rows from loc_a101.csv:
+           CID      CNTRY
+0  AW-00011000  Australia
+1  AW-00011001  Australia
+2  AW-00011002  Australia
+3  AW-00011003  Australia
+4  AW-00011004  Australia
+2026-06-18 09:42:10,679 |INFO | [TRUNCATE] Truncating bronze.erp_loc_a101 ...
+2026-06-18 09:42:10,694 |INFO | [SUCCESS] bronze.erp_loc_a101 truncated successfully.
+2026-06-18 09:42:10,695 |INFO | [LOAD] Loading data into bronze.erp_loc_a101 ...
+2026-06-18 09:42:11,842 |INFO | [SUCCESS] Data loaded into bronze.erp_loc_a101
+2026-06-18 09:42:11,843 |INFO | [VALIDATION] Checking row count in bronze.erp_loc_a101 ...
+2026-06-18 09:42:11,853 |INFO | [INFO] Row count after load for bronze.erp_loc_a101: 18484
+2026-06-18 09:42:11,854 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:11,854 |INFO | Processing table: bronze.erp_px_cat_g1v2
+2026-06-18 09:42:11,854 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\PX_CAT_G1V2.csv
+2026-06-18 09:42:11,854 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:42:11,855 |INFO | [EXTRACT] Reading data from px_cat_g1v2.csv ...
+2026-06-18 09:42:11,858 |INFO | [SUCCESS] Data extracted from px_cat_g1v2.csv
+2026-06-18 09:42:11,859 |INFO | [INFO] Total rows extracted: 37
+2026-06-18 09:42:11,859 |INFO | [INFO] Total columns extracted: 4
+2026-06-18 09:42:11,861 |INFO | [PREVIEW] First 5 rows from px_cat_g1v2.csv:
+      ID          CAT             SUBCAT MAINTENANCE
+0  AC_BR  Accessories         Bike Racks         Yes
+1  AC_BS  Accessories        Bike Stands          No
+2  AC_BC  Accessories  Bottles and Cages          No
+3  AC_CL  Accessories           Cleaners         Yes
+4  AC_FE  Accessories            Fenders          No
+2026-06-18 09:42:11,862 |INFO | [TRUNCATE] Truncating bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:42:11,872 |INFO | [SUCCESS] bronze.erp_px_cat_g1v2 truncated successfully.
+2026-06-18 09:42:11,873 |INFO | [LOAD] Loading data into bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:42:11,895 |INFO | [SUCCESS] Data loaded into bronze.erp_px_cat_g1v2
+2026-06-18 09:42:11,896 |INFO | [VALIDATION] Checking row count in bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:42:11,905 |INFO | [INFO] Row count after load for bronze.erp_px_cat_g1v2: 37
+2026-06-18 09:42:11,906 |INFO | ================================================================================
+2026-06-18 09:42:11,907 |INFO | STARTING PROCEDURE EXECUTION: silver.load_silver
+2026-06-18 09:42:11,907 |INFO | ================================================================================
+2026-06-18 09:42:11,907 |INFO | [EXECUTING] EXEC silver.load_silver
+2026-06-18 09:42:13,466 |INFO | [SUCCESS] Procedure 'silver.load_silver' executed successfully.
+2026-06-18 09:42:13,467 |INFO | ==================================================
+2026-06-18 09:42:13,468 |INFO | Validating Gold Layer
+2026-06-18 09:42:13,468 |INFO | ==================================================
+2026-06-18 09:42:13,710 |INFO | gold.dim_customers rows: 18484
+2026-06-18 09:42:13,738 |INFO | gold.dim_products rows: 295
+2026-06-18 09:42:14,339 |INFO | gold.fact_sales rows: 60398
+2026-06-18 09:42:14,341 |ERROR | ETL failed! Error: 'int' object is not callable
+Traceback (most recent call last):
+  File "c:\Project_2\data_warehouse_project\python_etl\main.py", line 169, in <module>
+    print(f"etl_duration.seconds: {etl_duration.seconds()}")
+                                   ~~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'int' object is not callable
+2026-06-18 09:45:10,284 |INFO | ================================================================================
+2026-06-18 09:45:10,284 |INFO | ETL PROCESS STARTED
+2026-06-18 09:45:10,285 |INFO | ================================================================================
+2026-06-18 09:45:10,285 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:10,285 |INFO | Processing table: bronze.crm_cust_info
+2026-06-18 09:45:10,285 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\cust_info.csv
+2026-06-18 09:45:10,285 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:10,285 |INFO | [EXTRACT] Reading data from cust_info.csv ...
+2026-06-18 09:45:10,329 |INFO | [SUCCESS] Data extracted from cust_info.csv
+2026-06-18 09:45:10,329 |INFO | [INFO] Total rows extracted: 18494
+2026-06-18 09:45:10,329 |INFO | [INFO] Total columns extracted: 7
+2026-06-18 09:45:10,336 |INFO | [PREVIEW] First 5 rows from cust_info.csv:
+    cst_id     cst_key cst_firstname cst_lastname cst_marital_status cst_gndr cst_create_date
+0  11000.0  AW00011000           Jon        Yang                   M        M      2025-10-06
+1  11001.0  AW00011001        Eugene      Huang                    S        M      2025-10-06
+2  11002.0  AW00011002         Ruben       Torres                  M        M      2025-10-06
+3  11003.0  AW00011003       Christy          Zhu                  S        F      2025-10-06
+4  11004.0  AW00011004     Elizabeth      Johnson                  S        F      2025-10-06
+2026-06-18 09:45:10,337 |INFO | [TRUNCATE] Truncating bronze.crm_cust_info ...
+2026-06-18 09:45:11,041 |INFO | [SUCCESS] bronze.crm_cust_info truncated successfully.
+2026-06-18 09:45:11,042 |INFO | [LOAD] Loading data into bronze.crm_cust_info ...
+2026-06-18 09:45:15,193 |INFO | [SUCCESS] Data loaded into bronze.crm_cust_info
+2026-06-18 09:45:15,194 |INFO | [VALIDATION] Checking row count in bronze.crm_cust_info ...
+2026-06-18 09:45:15,203 |INFO | [INFO] Row count after load for bronze.crm_cust_info: 18494
+2026-06-18 09:45:15,204 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:15,204 |INFO | Processing table: bronze.crm_prd_info
+2026-06-18 09:45:15,204 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\prd_info.csv
+2026-06-18 09:45:15,204 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:15,204 |INFO | [EXTRACT] Reading data from prd_info.csv ...
+2026-06-18 09:45:15,223 |INFO | [SUCCESS] Data extracted from prd_info.csv
+2026-06-18 09:45:15,224 |INFO | [INFO] Total rows extracted: 397
+2026-06-18 09:45:15,224 |INFO | [INFO] Total columns extracted: 7
+2026-06-18 09:45:15,226 |INFO | [PREVIEW] First 5 rows from prd_info.csv:
+   prd_id           prd_key                     prd_nm  prd_cost prd_line prd_start_dt  prd_end_dt
+0     210  CO-RF-FR-R92B-58  HL Road Frame - Black- 58       NaN       R    2003-07-01         NaN
+1     211  CO-RF-FR-R92R-58    HL Road Frame - Red- 58       NaN       R    2003-07-01         NaN
+2     212   AC-HE-HL-U509-R      Sport-100 Helmet- Red      12.0       S    2011-07-01  2007-12-28
+3     213   AC-HE-HL-U509-R      Sport-100 Helmet- Red      14.0       S    2012-07-01  2008-12-27
+4     214   AC-HE-HL-U509-R      Sport-100 Helmet- Red      13.0       S    2013-07-01         NaN
+2026-06-18 09:45:15,226 |INFO | [TRUNCATE] Truncating bronze.crm_prd_info ...
+2026-06-18 09:45:15,239 |INFO | [SUCCESS] bronze.crm_prd_info truncated successfully.
+2026-06-18 09:45:15,239 |INFO | [LOAD] Loading data into bronze.crm_prd_info ...
+2026-06-18 09:45:15,847 |INFO | [SUCCESS] Data loaded into bronze.crm_prd_info
+2026-06-18 09:45:15,848 |INFO | [VALIDATION] Checking row count in bronze.crm_prd_info ...
+2026-06-18 09:45:15,854 |INFO | [INFO] Row count after load for bronze.crm_prd_info: 397
+2026-06-18 09:45:15,855 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:15,855 |INFO | Processing table: bronze.crm_sales_details
+2026-06-18 09:45:15,855 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_crm\sales_details.csv
+2026-06-18 09:45:15,855 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:15,855 |INFO | [EXTRACT] Reading data from sales_details.csv ...
+2026-06-18 09:45:15,950 |INFO | [SUCCESS] Data extracted from sales_details.csv
+2026-06-18 09:45:15,950 |INFO | [INFO] Total rows extracted: 60398
+2026-06-18 09:45:15,950 |INFO | [INFO] Total columns extracted: 9
+2026-06-18 09:45:15,952 |INFO | [PREVIEW] First 5 rows from sales_details.csv:
+  sls_ord_num sls_prd_key  sls_cust_id  sls_order_dt  sls_ship_dt  sls_due_dt  sls_sales  sls_quantity  sls_price
+0     SO43697  BK-R93R-62        21768      20101229     20110105    20110110     3578.0             1     3578.0
+1     SO43698  BK-M82S-44        28389      20101229     20110105    20110110     3400.0             1     3400.0
+2     SO43699  BK-M82S-44        25863      20101229     20110105    20110110     3400.0             1     3400.0
+3     SO43700  BK-R50B-62        14501      20101229     20110105    20110110      699.0             1      699.0
+4     SO43701  BK-M82S-44        11003      20101229     20110105    20110110     3400.0             1     3400.0
+2026-06-18 09:45:15,952 |INFO | [TRUNCATE] Truncating bronze.crm_sales_details ...
+2026-06-18 09:45:15,964 |INFO | [SUCCESS] bronze.crm_sales_details truncated successfully.
+2026-06-18 09:45:15,964 |INFO | [LOAD] Loading data into bronze.crm_sales_details ...
+2026-06-18 09:45:22,862 |INFO | [SUCCESS] Data loaded into bronze.crm_sales_details
+2026-06-18 09:45:22,863 |INFO | [VALIDATION] Checking row count in bronze.crm_sales_details ...
+2026-06-18 09:45:22,884 |INFO | [INFO] Row count after load for bronze.crm_sales_details: 60398
+2026-06-18 09:45:22,885 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:22,885 |INFO | Processing table: bronze.erp_cust_az12
+2026-06-18 09:45:22,885 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\CUST_AZ12.csv
+2026-06-18 09:45:22,885 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:22,886 |INFO | [EXTRACT] Reading data from cust_az12.csv ...
+2026-06-18 09:45:22,914 |INFO | [SUCCESS] Data extracted from cust_az12.csv
+2026-06-18 09:45:22,914 |INFO | [INFO] Total rows extracted: 18484
+2026-06-18 09:45:22,914 |INFO | [INFO] Total columns extracted: 3
+2026-06-18 09:45:22,916 |INFO | [PREVIEW] First 5 rows from cust_az12.csv:
+             CID       BDATE     GEN
+0  NASAW00011000  1971-10-06    Male
+1  NASAW00011001  1976-05-10    Male
+2  NASAW00011002  1971-02-09    Male
+3  NASAW00011003  1973-08-14  Female
+4  NASAW00011004  1979-08-05  Female
+2026-06-18 09:45:22,917 |INFO | [TRUNCATE] Truncating bronze.erp_cust_az12 ...
+2026-06-18 09:45:22,927 |INFO | [SUCCESS] bronze.erp_cust_az12 truncated successfully.
+2026-06-18 09:45:22,927 |INFO | [LOAD] Loading data into bronze.erp_cust_az12 ...
+2026-06-18 09:45:24,555 |INFO | [SUCCESS] Data loaded into bronze.erp_cust_az12
+2026-06-18 09:45:24,556 |INFO | [VALIDATION] Checking row count in bronze.erp_cust_az12 ...
+2026-06-18 09:45:24,568 |INFO | [INFO] Row count after load for bronze.erp_cust_az12: 18484
+2026-06-18 09:45:24,569 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:24,570 |INFO | Processing table: bronze.erp_loc_a101
+2026-06-18 09:45:24,570 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\LOC_A101.csv
+2026-06-18 09:45:24,570 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:24,570 |INFO | [EXTRACT] Reading data from loc_a101.csv ...
+2026-06-18 09:45:24,613 |INFO | [SUCCESS] Data extracted from loc_a101.csv
+2026-06-18 09:45:24,613 |INFO | [INFO] Total rows extracted: 18484
+2026-06-18 09:45:24,613 |INFO | [INFO] Total columns extracted: 2
+2026-06-18 09:45:24,614 |INFO | [PREVIEW] First 5 rows from loc_a101.csv:
+           CID      CNTRY
+0  AW-00011000  Australia
+1  AW-00011001  Australia
+2  AW-00011002  Australia
+3  AW-00011003  Australia
+4  AW-00011004  Australia
+2026-06-18 09:45:24,615 |INFO | [TRUNCATE] Truncating bronze.erp_loc_a101 ...
+2026-06-18 09:45:24,627 |INFO | [SUCCESS] bronze.erp_loc_a101 truncated successfully.
+2026-06-18 09:45:24,627 |INFO | [LOAD] Loading data into bronze.erp_loc_a101 ...
+2026-06-18 09:45:25,793 |INFO | [SUCCESS] Data loaded into bronze.erp_loc_a101
+2026-06-18 09:45:25,794 |INFO | [VALIDATION] Checking row count in bronze.erp_loc_a101 ...
+2026-06-18 09:45:25,805 |INFO | [INFO] Row count after load for bronze.erp_loc_a101: 18484
+2026-06-18 09:45:25,806 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:25,806 |INFO | Processing table: bronze.erp_px_cat_g1v2
+2026-06-18 09:45:25,807 |INFO | Source file: C:\Project_2\data_warehouse_project\datasets\source_erp\PX_CAT_G1V2.csv
+2026-06-18 09:45:25,807 |INFO | --------------------------------------------------------------------------------
+2026-06-18 09:45:25,807 |INFO | [EXTRACT] Reading data from px_cat_g1v2.csv ...
+2026-06-18 09:45:25,830 |INFO | [SUCCESS] Data extracted from px_cat_g1v2.csv
+2026-06-18 09:45:25,831 |INFO | [INFO] Total rows extracted: 37
+2026-06-18 09:45:25,831 |INFO | [INFO] Total columns extracted: 4
+2026-06-18 09:45:25,834 |INFO | [PREVIEW] First 5 rows from px_cat_g1v2.csv:
+      ID          CAT             SUBCAT MAINTENANCE
+0  AC_BR  Accessories         Bike Racks         Yes
+1  AC_BS  Accessories        Bike Stands          No
+2  AC_BC  Accessories  Bottles and Cages          No
+3  AC_CL  Accessories           Cleaners         Yes
+4  AC_FE  Accessories            Fenders          No
+2026-06-18 09:45:25,835 |INFO | [TRUNCATE] Truncating bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:45:25,848 |INFO | [SUCCESS] bronze.erp_px_cat_g1v2 truncated successfully.
+2026-06-18 09:45:25,849 |INFO | [LOAD] Loading data into bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:45:25,875 |INFO | [SUCCESS] Data loaded into bronze.erp_px_cat_g1v2
+2026-06-18 09:45:25,876 |INFO | [VALIDATION] Checking row count in bronze.erp_px_cat_g1v2 ...
+2026-06-18 09:45:25,883 |INFO | [INFO] Row count after load for bronze.erp_px_cat_g1v2: 37
+2026-06-18 09:45:25,886 |INFO | ================================================================================
+2026-06-18 09:45:25,887 |INFO | STARTING PROCEDURE EXECUTION: silver.load_silver
+2026-06-18 09:45:25,887 |INFO | ================================================================================
+2026-06-18 09:45:25,889 |INFO | [EXECUTING] EXEC silver.load_silver
+2026-06-18 09:45:27,403 |INFO | [SUCCESS] Procedure 'silver.load_silver' executed successfully.
+2026-06-18 09:45:27,405 |INFO | ==================================================
+2026-06-18 09:45:27,406 |INFO | Validating Gold Layer
+2026-06-18 09:45:27,406 |INFO | ==================================================
+2026-06-18 09:45:27,626 |INFO | gold.dim_customers rows: 18484
+2026-06-18 09:45:27,651 |INFO | gold.dim_products rows: 295
+2026-06-18 09:45:28,268 |INFO | gold.fact_sales rows: 60398
+2026-06-18 09:45:28,269 |INFO | etl_start_time: 2026-06-18 09:45:10.283219
+2026-06-18 09:45:28,270 |INFO | etl_end_time: 2026-06-18 09:45:28.269608
+2026-06-18 09:45:28,270 |INFO | etl_duration: 0:00:17.986389
+2026-06-18 09:45:28,270 |INFO | ================================================================================
+2026-06-18 09:45:28,270 |INFO | ETL PROCESS COMPLETED SUCCESSFULLY
+2026-06-18 09:45:28,270 |INFO | ================================================================================
+
+Earlier, my project was SQL-focused where I manually executed scripts and procedures in SSMS. Later, I enhanced it into an end-to-end automated ETL pipeline using Python. Now Python extracts CSV data, loads Bronze tables, executes Silver stored procedures, validates Gold tables, generates Excel dashboards, logs execution details, handles errors, and can be scheduled using Windows Task Scheduler.
+1. How to generate a good README?
+2. How to structure the .gitignore file?
